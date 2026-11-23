@@ -42,6 +42,14 @@ helper_outbounds = [
     item for item in white.get("outbounds", [])
     if not str(item.get("tag", "")).startswith("igareck-node-")
 ]
+# Keep fragmentation lightweight to avoid adding unnecessary handshake delay.
+for helper in helper_outbounds:
+    if helper.get("tag") == "fragment":
+        settings = helper.setdefault("settings", {})
+        if isinstance(settings.get("fragment"), dict):
+            settings["fragment"]["interval"] = "1-3"
+        for noise in settings.get("noises", []):
+            noise["delay"] = "1-3"
 base = json.loads(json.dumps(white))
 base["_meta"] = {
     "name": "AVYRN VPN — Обычные / AUTO / Белый список / AUTO БС",
