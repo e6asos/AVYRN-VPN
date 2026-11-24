@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
+import copy
 import json
+import socket
 import urllib.request
 from pathlib import Path
 
@@ -26,13 +28,12 @@ if len(regular_nodes) < 5 or len(white_nodes) < 5:
     raise SystemExit(f"Refusing to publish: too few source nodes (regular={len(regular_nodes)}, whitelist={len(white_nodes)})")
 
 def resolve_hosts(nodes):
-    import socket
+    import ipaddress
     hosts = []
     for node in nodes:
         try:
             host = node["settings"]["vnext"][0]["address"]
             try:
-                import ipaddress
                 ipaddress.ip_address(host)
             except ValueError:
                 host = socket.gethostbyname(host)
@@ -42,8 +43,6 @@ def resolve_hosts(nodes):
     return hosts
 
 def country_codes(nodes):
-    # ip-api batch lookup; country codes are converted to ISO-3 for compact labels.
-    import ipaddress
     hosts = resolve_hosts(nodes)
     unique = list(dict.fromkeys(h for h in hosts if h))
     lookup = {}
@@ -75,6 +74,13 @@ def country_codes(nodes):
         labels.append(country.alpha_3 if country else (code or "UNK"))
     return labels
 
+def alpha_suffix(number):
+    letters = ""
+    while number:
+        number, remainder = divmod(number - 1, 26)
+        letters = chr(65 + remainder) + letters
+    return letters
+
 def rename_nodes(nodes, prefix):
     labels = country_codes(nodes)
     totals = {}
@@ -82,18 +88,11 @@ def rename_nodes(nodes, prefix):
         totals[label] = totals.get(label, 0) + 1
     seen = {}
     renamed = []
+    pool = "AVYRN | " if prefix == "REG" else "AVYRN БС | "
     for node, label in zip(nodes, labels):
         seen[label] = seen.get(label, 0) + 1
-        number = seen[label]
-        suffix = ""
-        if totals[label] > 1:
-            letters = ""
-            while number:
-                number, remainder = divmod(number - 1, 26)
-                letters = chr(65 + remainder) + letters
-            suffix = f" {letters}"
-        item = json.loads(json.dumps(node))
-        pool = "AVYRN | " if prefix == "REG" else "AVYRN БС | "
+        suffix = f" {alpha_suffix(seen[label])}" if totals[label] > 1 else ""
+        item = copy.deepcopy(node)
         item["tag"] = f"{pool}{label}{suffix}"
         renamed.append(item)
     return renamed
@@ -101,13 +100,10 @@ def rename_nodes(nodes, prefix):
 regular_nodes = rename_nodes(regular_nodes, "REG")
 white_nodes = rename_nodes(white_nodes, "BS")
 
-# Keep the whitelist profile's DNS, inbounds, routing baseline and helper outbounds.
-# Reuse its fragment/direct/block/dns outbounds only once; both node pools can reference them.
 helper_outbounds = [
-    item for item in white.get("outbounds", [])
+    copy.deepcopy(item) for item in white.get("outbounds", [])
     if not str(item.get("tag", "")).startswith("igareck-node-")
 ]
-# Keep fragmentation lightweight to avoid adding unnecessary handshake delay.
 for helper in helper_outbounds:
     if helper.get("tag") == "fragment":
         settings = helper.setdefault("settings", {})
@@ -115,57 +111,117 @@ for helper in helper_outbounds:
             settings["fragment"]["interval"] = "1-3"
         for noise in settings.get("noises", []):
             noise["delay"] = "1-3"
-base = json.loads(json.dumps(white))
-base["_meta"] = {
-    "name": "AVYRN VPN — Обычные / AUTO / Белый список / AUTO БС",
-    "generator": "AVYRN-VPN",
-    "client": "Happ",
-    "notes": [
-        f"{len(regular_nodes)} обычных серверов",
-        f"{len(white_nodes)} серверов белого списка",
-        "Два независимых leastPing AUTO-балансира; обновление источников каждые 2 часа"
-    ],
-    "source_datetime_utc": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
-}
-base["outbounds"] = regular_nodes + white_nodes + helper_outbounds
+
+base = copy.deepcopy(white)
+base.pop("_meta", None)
+base.pop("remarks", None)
+base["outbounds"] = []
 base["observatory"] = {
     "subjectSelector": ["AVYRN | ", "AVYRN БС | "],
     "probeURL": "https://www.gstatic.com/generate_204",
     "probeInterval": "5m",
     "enableConcurrency": True
 }
-routing = base.setdefault("routing", {})
-routing["balancers"] = [
-    {
-        "tag": "AVYRN-AUTO-REG",
-        "selector": ["AVYRN | "],
-        "fallbackTag": regular_nodes[0]["tag"],
-        "strategy": {"type": "leastPing"}
-    },
-    {
-        "tag": "AVYRN-AUTO-BS",
-        "selector": ["AVYRN БС | "],
-        "fallbackTag": white_nodes[0]["tag"],
-        "strategy": {"type": "leastPing"}
+
+def profile_shell(remarks):
+    profile = copy.deepcopy(base)
+    profile["remarks"] = remarks
+    profile["name"] = remarks
+    return profile
+
+def make_manual_profile(node):
+    tag = node["tag"]
+    profile = profile_shell(tag)
+    profile["outbounds"] = [copy.deepcopy(node)] + copy.deepcopy(helper_outbounds)
+    profile["observatory"] = {
+        "subjectSelector": [tag],
+        "probeURL": "https://www.gstatic.com/generate_204",
+        "probeInterval": "5m",
+        "enableConcurrency": True
     }
-]
-rules = routing.get("rules", [])
-for rule in rules:
-    if rule.get("balancerTag"):
-        rule["balancerTag"] = "AVYRN-AUTO-REG"
-    if rule.get("outboundTag") == "igareck-auto":
-        rule["outboundTag"] = "AVYRN-AUTO-REG"
-routing["rules"] = rules
+    routing = profile.setdefault("routing", {})
+    routing["balancers"] = []
+    rewritten = []
+    for rule in routing.get("rules", []):
+        rule = copy.deepcopy(rule)
+        if rule.get("balancerTag"):
+            rule.pop("balancerTag", None)
+            rule["outboundTag"] = tag
+        if rule.get("outboundTag") == "igareck-auto":
+            rule["outboundTag"] = tag
+        rewritten.append(rule)
+    routing["rules"] = rewritten
+    return profile
+
+def make_auto_profile(nodes, prefix, title, balancer_tag):
+    if not nodes:
+        raise SystemExit(f"Refusing to publish: empty AUTO pool {title}")
+    profile = profile_shell(title)
+    profile["outbounds"] = copy.deepcopy(nodes) + copy.deepcopy(helper_outbounds)
+    profile["observatory"] = {
+        "subjectSelector": [prefix],
+        "probeURL": "https://www.gstatic.com/generate_204",
+        "probeInterval": "5m",
+        "enableConcurrency": True
+    }
+    routing = profile.setdefault("routing", {})
+    routing["balancers"] = [{
+        "tag": balancer_tag,
+        "selector": [prefix],
+        "fallbackTag": nodes[0]["tag"],
+        "strategy": {"type": "leastPing"}
+    }]
+    rewritten = []
+    has_default_balancer_rule = False
+    for rule in routing.get("rules", []):
+        rule = copy.deepcopy(rule)
+        if rule.get("balancerTag"):
+            rule["balancerTag"] = balancer_tag
+            if rule.get("network") == "tcp,udp":
+                has_default_balancer_rule = True
+        if rule.get("outboundTag") == "igareck-auto":
+            rule["outboundTag"] = balancer_tag
+        rewritten.append(rule)
+    if not has_default_balancer_rule:
+        rewritten.append({
+            "type": "field",
+            "network": "tcp,udp",
+            "balancerTag": balancer_tag
+        })
+    routing["rules"] = rewritten
+    return profile
+
+# Happ accepts a JSON array of independent Xray configurations.
+# Each manual node is one selectable profile; the two AUTO profiles
+# independently balance only their own pool.
+profiles = []
+profiles.extend(make_manual_profile(node) for node in regular_nodes)
+profiles.append(make_auto_profile(
+    regular_nodes, "AVYRN | ", "AVYRN | AUTO", "AVYRN-AUTO-REG"
+))
+profiles.extend(make_manual_profile(node) for node in white_nodes)
+profiles.append(make_auto_profile(
+    white_nodes, "AVYRN БС | ", "AVYRN БС | AUTO", "AVYRN-AUTO-BS"
+))
 
 # Sanity checks before publishing.
-tags = [item.get("tag") for item in base["outbounds"]]
-if len(tags) != len(set(tags)):
-    raise SystemExit("Refusing to publish: duplicate outbound tags")
-for balancer in routing["balancers"]:
-    prefix = balancer["selector"][0]
-    if not any(tag.startswith(prefix) for tag in tags):
-        raise SystemExit(f"Refusing to publish: empty selector {prefix}")
-if not any(item.get("tag") == "direct" for item in base["outbounds"]):
-    raise SystemExit("Refusing to publish: missing direct outbound")
-Path("subscription.json").write_text(json.dumps(base, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-print(f"Built AVYRN: regular={len(regular_nodes)}, whitelist={len(white_nodes)}, total={len(base['outbounds'])}")
+for profile in profiles:
+    tags = [item.get("tag") for item in profile.get("outbounds", [])]
+    if len(tags) != len(set(tags)):
+        raise SystemExit(f"Refusing to publish: duplicate tags in {profile.get('remarks')}")
+    if not profile.get("outbounds"):
+        raise SystemExit(f"Refusing to publish: no outbounds in {profile.get('remarks')}")
+if profiles[-1]["routing"]["balancers"][0]["selector"] != ["AVYRN БС | "]:
+    raise SystemExit("Refusing to publish: whitelist AUTO selector mismatch")
+if profiles[len(regular_nodes)]["routing"]["balancers"][0]["selector"] != ["AVYRN | "]:
+    raise SystemExit("Refusing to publish: regular AUTO selector mismatch")
+
+Path("subscription.json").write_text(
+    json.dumps(profiles, ensure_ascii=False, indent=2) + "\n",
+    encoding="utf-8"
+)
+print(
+    f"Built AVYRN 4-in-1: regular_manual={len(regular_nodes)}, "
+    f"regular_auto=1, whitelist_manual={len(white_nodes)}, whitelist_auto=1, "
+    f"profiles={len(profiles)}"
+)
