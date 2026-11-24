@@ -25,11 +25,18 @@ white_nodes = node_outbounds(white)
 if len(regular_nodes) < 5 or len(white_nodes) < 5:
     raise SystemExit(f"Refusing to publish: too few source nodes (regular={len(regular_nodes)}, whitelist={len(white_nodes)})")
 
+def alpha_name(index):
+    name = ""
+    while index:
+        index, remainder = divmod(index - 1, 26)
+        name = chr(65 + remainder) + name
+    return name
+
 def rename_nodes(nodes, prefix):
     renamed = []
     for index, node in enumerate(nodes, 1):
         item = json.loads(json.dumps(node))
-        item["tag"] = f"AVYRN-{prefix}-{index:03d}"
+        item["tag"] = f"AVYRN-{prefix}-{alpha_name(index)}"
         renamed.append(item)
     return renamed
 
