@@ -52,8 +52,9 @@ def rename(items,prefix):
  return out
 reg,bs=rename(reg,"REG"),rename(bs,"BS")
 # AVYRN layout: 40 regular manual servers; every other profile has exactly one node.
-reg,bs=reg[:40],bs[:1]
+reg,bs=reg[:40],bs[:40]
 reg_auto=reg[:1]
+bs_auto=bs[:1]
 helpers=[copy.deepcopy(x) for x in white.get("outbounds",[]) if not str(x.get("tag","")).startswith("igareck-node-")]
 for h in helpers:
  if h.get("tag")=="fragment":
@@ -84,7 +85,7 @@ def auto(items,prefix,title,tag):
 
 # One Happ JSON-array subscription: every manual server is a selectable profile,
 # plus two independent leastPing profiles that only see their own server pool.
-profiles=[manual(reg,"AVYRN | Обычные"), auto(reg_auto,"AVYRN | ","AVYRN | AUTO","AVYRN-AUTO-REG"), manual(bs,"AVYRN БС | Обычные"), auto(bs,"AVYRN БС | ","AVYRN БС | AUTO","AVYRN-AUTO-BS")]
+profiles=[manual(reg,"AVYRN | Обычные"), auto(reg_auto,"AVYRN | ","AVYRN | AUTO","AVYRN-AUTO-REG"), manual(bs,"AVYRN БС | Обычные"), auto(bs_auto,"AVYRN БС | ","AVYRN БС | AUTO","AVYRN-AUTO-BS")]
 if len(profiles)!=4: raise SystemExit("Expected exactly four profiles")
 Path("subscription.json").write_text(json.dumps(profiles,ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf-8")
 print(f"AVYRN 4-in-1: regular={len(reg)}+AUTO, whitelist={len(bs)}+AUTO, profiles={len(profiles)}")
