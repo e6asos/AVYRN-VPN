@@ -110,11 +110,11 @@ def parse_uri(line):
         return None
 
 def collect(urls):
-    found, seen = [], set()
+    groups, seen = [], set()
     for url in urls:
+        group = []
         try:
             raw = fetch_text(url)
-            parsed = 0
             for line in raw.splitlines():
                 item = parse_uri(line)
                 if not item:
@@ -124,12 +124,19 @@ def collect(urls):
                 if key in seen:
                     continue
                 seen.add(key)
-                found.append(item)
-                parsed += 1
-            print(f"Source {url}: parsed {parsed}")
+                item["source"] = url
+                group.append(item)
+            print(f"Source {url}: parsed {len(group)} unique nodes")
         except Exception as exc:
             print(f"Source unavailable {url}: {exc}")
-    return found
+        groups.append(group)
+    # Interleave upstreams so the first feed cannot monopolize the final 40 nodes.
+    merged = []
+    for index in range(max((len(group) for group in groups), default=0)):
+        for group in groups:
+            if index < len(group):
+                merged.append(group[index])
+    return merged
 
 def tcp_check(item):
     try:
