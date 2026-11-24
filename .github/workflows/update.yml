@@ -42,7 +42,7 @@ jobs:
           names = [p.get("remarks", "") for p in profiles]
           assert names.count("AVYRN | AUTO") == 1, names
           assert names.count("AVYRN БС | AUTO") == 1, names
-          assert sum(n.startswith("🇷") or n.startswith("🏳️ AVYRN |") for n in names) >= 1
+          assert sum(("AVYRN | " in n and n != "AVYRN | AUTO") for n in names) >= 1\n          assert sum(("AVYRN БС | " in n and n != "AVYRN БС | AUTO") for n in names) >= 1
           assert len(profiles) >= 12, len(profiles)
           for p in profiles:
               if p.get("remarks") == "AVYRN | AUTO":
