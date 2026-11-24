@@ -1366,7 +1366,7 @@
       }
     },
     {
-      "tag": "AVYRN | RUS",
+      "tag": "AVYRN | A",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6054,7 +6054,7 @@
       }
     },
     {
-      "tag": "AVYRN | UNK",
+      "tag": "AVYRN | B",
       "protocol": "trojan",
       "settings": {
         "servers": [
