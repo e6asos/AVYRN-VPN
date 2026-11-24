@@ -131,13 +131,13 @@ routing = base.setdefault("routing", {})
 routing["balancers"] = [
     {
         "tag": "AVYRN-AUTO-REG",
-        "selector": ["AVYRN-REG-"],
+        "selector": ["AVYRN | "],
         "fallbackTag": regular_nodes[0]["tag"],
         "strategy": {"type": "leastPing"}
     },
     {
         "tag": "AVYRN-AUTO-BS",
-        "selector": ["AVYRN-BS-"],
+        "selector": ["AVYRN БС | "],
         "fallbackTag": white_nodes[0]["tag"],
         "strategy": {"type": "leastPing"}
     }
