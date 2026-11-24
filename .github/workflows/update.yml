@@ -2,6 +2,11 @@ name: Update AVYRN VPN
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - ".github/workflows/update.yml"
   schedule:
     - cron: "17 */2 * * *"
 
@@ -27,6 +32,27 @@ jobs:
 
       - name: Validate JSON
         run: python3 -m json.tool subscription.json > /dev/null
+
+      - name: Validate four isolated modes
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          profiles = json.loads(Path("subscription.json").read_text(encoding="utf-8"))
+          names = [p.get("remarks", "") for p in profiles]
+          assert names.count("AVYRN | AUTO") == 1, names
+          assert names.count("AVYRN БС | AUTO") == 1, names
+          assert sum(n.startswith("🇷") or n.startswith("🏳️ AVYRN |") for n in names) >= 1
+          assert len(profiles) >= 12, len(profiles)
+          for p in profiles:
+              if p.get("remarks") == "AVYRN | AUTO":
+                  tags = [o.get("tag", "") for o in p.get("outbounds", [])]
+                  assert tags and all("AVYRN БС" not in t for t in tags), tags
+              if p.get("remarks") == "AVYRN БС | AUTO":
+                  tags = [o.get("tag", "") for o in p.get("outbounds", [])]
+                  assert tags and all("AVYRN | " not in t for t in tags), tags
+          print(f"Validated {len(profiles)} Happ profiles")
+          PY
 
       - name: Publish
         run: |
