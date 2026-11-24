@@ -84,7 +84,14 @@ def rename_nodes(nodes, prefix):
     renamed = []
     for node, label in zip(nodes, labels):
         seen[label] = seen.get(label, 0) + 1
-        suffix = "" if totals[label] == 1 else f" {chr(64 + seen[label])}" if seen[label] <= 26 else f" {seen[label]}"
+        number = seen[label]
+        suffix = ""
+        if totals[label] > 1:
+            letters = ""
+            while number:
+                number, remainder = divmod(number - 1, 26)
+                letters = chr(65 + remainder) + letters
+            suffix = f" {letters}"
         item = json.loads(json.dumps(node))
         pool = "AVYRN | " if prefix == "REG" else "AVYRN БС | "
         item["tag"] = f"{pool}{label}{suffix}"
