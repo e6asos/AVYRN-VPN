@@ -93,8 +93,9 @@ def manual_profiles(items):
 def auto(items,prefix,title,tag):
  if not items: raise SystemExit("Empty AUTO pool: "+title)
  p=shell(title); p["outbounds"]=copy.deepcopy(items)+copy.deepcopy(helpers)
- p["observatory"]={"subjectSelector":[prefix],"probeURL":"https://www.gstatic.com/generate_204","probeInterval":"5m","enableConcurrency":True}
- p["routing"]["balancers"]=[{"tag":tag,"selector":[prefix],"fallbackTag":items[0]["tag"],"strategy":{"type":"leastPing"}}]
+ selectors=list(dict.fromkeys(x["tag"].split(prefix)[0]+prefix for x in items))
+ p["observatory"]={"subjectSelector":selectors,"probeURL":"https://www.gstatic.com/generate_204","probeInterval":"5m","enableConcurrency":True}
+ p["routing"]["balancers"]=[{"tag":tag,"selector":selectors,"fallbackTag":items[0]["tag"],"strategy":{"type":"leastPing"}}]
  p["routing"]["rules"]=copy.deepcopy(common_rules)+[{"type":"field","network":"tcp,udp","balancerTag":tag}]
  return p
 
