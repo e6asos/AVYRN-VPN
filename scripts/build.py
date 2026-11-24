@@ -51,6 +51,8 @@ def rename(items,prefix):
   node=copy.deepcopy(item); node["tag"]=tag; out.append(node)
  return out
 reg,bs=rename(reg,"REG"),rename(bs,"BS")
+# Keep a curated, compact pool in Happ: 40 manual servers per category.
+reg,bs=reg[:40],bs[:40]
 helpers=[copy.deepcopy(x) for x in white.get("outbounds",[]) if not str(x.get("tag","")).startswith("igareck-node-")]
 for h in helpers:
  if h.get("tag")=="fragment":
@@ -66,8 +68,8 @@ routing=base.setdefault("routing",{})
 common_rules=[copy.deepcopy(x) for x in routing.get("rules",[]) if not x.get("balancerTag") and x.get("outboundTag")!="igareck-auto"]
 def shell(title):
  p=copy.deepcopy(base); p["remarks"]=title; return p
-def manual(node):
- p=shell(node["tag"]); p["outbounds"]=[copy.deepcopy(node)]+copy.deepcopy(helpers)
+def manual(items,title):
+ p=shell(title); p["outbounds"]=copy.deepcopy(items)+copy.deepcopy(helpers)
  p.pop("observatory",None); p["routing"]["balancers"]=[]
  p["routing"]["rules"]=copy.deepcopy(common_rules)
  return p
@@ -81,10 +83,7 @@ def auto(items,prefix,title,tag):
 
 # One Happ JSON-array subscription: every manual server is a selectable profile,
 # plus two independent leastPing profiles that only see their own server pool.
-profiles=[manual(x) for x in reg]
-profiles.append(auto(reg,"AVYRN | ","AVYRN | AUTO","AVYRN-AUTO-REG"))
-profiles.extend(manual(x) for x in bs)
-profiles.append(auto(bs,"AVYRN БС | ","AVYRN БС | AUTO","AVYRN-AUTO-BS"))
-if len(profiles)!=len(reg)+len(bs)+2: raise SystemExit("Profile count mismatch")
+profiles=[manual(reg,"AVYRN | Обычные"), auto(reg,"AVYRN | ","AVYRN | AUTO","AVYRN-AUTO-REG"), manual(bs,"AVYRN БС | Обычные"), auto(bs,"AVYRN БС | ","AVYRN БС | AUTO","AVYRN-AUTO-BS")]
+if len(profiles)!=4: raise SystemExit("Expected exactly four profiles")
 Path("subscription.json").write_text(json.dumps(profiles,ensure_ascii=False,separators=(",",":"))+"\\n",encoding="utf-8")
 print(f"AVYRN 4-in-1: regular={len(reg)}+AUTO, whitelist={len(bs)}+AUTO, profiles={len(profiles)}")
