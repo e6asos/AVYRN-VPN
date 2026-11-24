@@ -38,17 +38,30 @@ def country_codes(items):
  except ImportError: pycountry=None
  return [(pycountry.countries.get(alpha_2=found[h]).alpha_3 if h in found and pycountry and pycountry.countries.get(alpha_2=found[h]) else found.get(h,"UNK")) for h in hosts]
 
-def suffix(n):
- out=""
- while n: n,r=divmod(n-1,26); out=chr(65+r)+out
- return out
+def country_flag(alpha3):
+ flags={
+  "DE":"🇩🇪","US":"🇺🇸","GB":"🇬🇧","NL":"🇳🇱","FR":"🇫🇷","FI":"🇫🇮",
+  "SE":"🇸🇪","NO":"🇳🇴","PL":"🇵🇱","CZ":"🇨🇿","CH":"🇨🇭","AT":"🇦🇹",
+  "BE":"🇧🇪","ES":"🇪🇸","IT":"🇮🇹","PT":"🇵🇹","CA":"🇨🇦","TR":"🇹🇷",
+  "RU":"🇷🇺","UA":"🇺🇦","KZ":"🇰🇿","JP":"🇯🇵","SG":"🇸🇬","HK":"🇭🇰",
+  "IN":"🇮🇳","AL":"🇦🇱","AE":"🇦🇪","BR":"🇧🇷","AU":"🇦🇺"
+ }
+ # Convert ISO-3 to ISO-2 for flag emoji.
+ try:
+  import pycountry
+  c=pycountry.countries.get(alpha_3=alpha3)
+  alpha2=c.alpha_2 if c else ""
+ except Exception:
+  alpha2=""
+ return flags.get(alpha2,"🏳️")
+
 def rename(items,prefix):
- labels=country_codes(items); totals={x:labels.count(x) for x in set(labels)}; seen={}; out=[]
+ labels=country_codes(items); out=[]
  label_prefix="AVYRN | " if prefix=="REG" else "AVYRN БС | "
  for item,country in zip(items,labels):
-  seen[country]=seen.get(country,0)+1
-  tag=label_prefix+country+((" "+suffix(seen[country])) if totals[country]>1 else "")
-  node=copy.deepcopy(item); node["tag"]=tag; out.append(node)
+  node=copy.deepcopy(item)
+  node["tag"]=country_flag(country)+" "+label_prefix+country
+  out.append(node)
  return out
 reg,bs=rename(reg,"REG"),rename(bs,"BS")
 # AVYRN layout: 40 regular manual servers; every other profile has exactly one node.
