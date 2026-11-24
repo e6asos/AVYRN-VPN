@@ -1,107 +1,317 @@
 #!/usr/bin/env python3
-import copy, json, socket, urllib.request
+"""Build one Happ subscription from independent, upstream-checked pools."""
+import copy
+import ipaddress
+import json
+import socket
+import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from urllib.parse import parse_qs, unquote, urlsplit
 
 SOURCES = {
- "regular": "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Export/Happ/GLOBAL/BLACK_VLESS_RUS_mobile_Happ_global.json",
- "whitelist": "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Export/Happ/GLOBAL/Vless-Reality-White-Lists-Rus-Mobile-Happ-global.json",
+    "regular": [
+        "https://raw.githubusercontent.com/mehrtat/vless-collector/main/vless.txt",
+        "https://raw.githubusercontent.com/pie-with-jam/PulseProxy/main/githubmirror/6.txt",
+        "https://raw.githubusercontent.com/wlunlocker/vpn-configs/main/blacklist_all.txt",
+    ],
+    "whitelist": [
+        "https://raw.githubusercontent.com/pie-with-jam/PulseProxy/main/githubmirror/30.txt",
+        "https://raw.githubusercontent.com/wlunlocker/vpn-configs/main/whitelist_all.txt",
+    ],
 }
-def fetch(url):
- req=urllib.request.Request(url,headers={"User-Agent":"AVYRN-VPN-sync/1.0"})
- with urllib.request.urlopen(req,timeout=45) as r: return json.loads(r.read().decode("utf-8"))
-regular, white = fetch(SOURCES["regular"]), fetch(SOURCES["whitelist"])
-def nodes(config):
- return [x for x in config.get("outbounds",[]) if str(x.get("tag","")).startswith("igareck-node-")]
-reg, bs = nodes(regular), nodes(white)
-if len(reg)<5 or len(bs)<5: raise SystemExit(f"Too few nodes: regular={len(reg)} whitelist={len(bs)}")
+BASE_HAPP = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Export/Happ/GLOBAL/Vless-Reality-White-Lists-Rus-Mobile-Happ-global.json"
+PROBE_URL = "https://www.gstatic.com/generate_204"
+MAX_PER_POOL = 40
+MIN_PER_POOL = 5
+TIMEOUT = 35
 
-def country_codes(items):
- import ipaddress
- hosts=[]
- for item in items:
-  try:
-   host=item["settings"]["vnext"][0]["address"]
-   try: ipaddress.ip_address(host)
-   except ValueError: host=socket.gethostbyname(host)
-   hosts.append(host)
-  except Exception: hosts.append(None)
- unique=list(dict.fromkeys(x for x in hosts if x)); found={}
- for start in range(0,len(unique),100):
-  batch=unique[start:start+100]
-  req=urllib.request.Request("http://ip-api.com/batch",data=json.dumps([{"query":x,"fields":"status,countryCode"} for x in batch]).encode(),headers={"Content-Type":"application/json"},method="POST")
-  try:
-   with urllib.request.urlopen(req,timeout=45) as r: result=json.loads(r.read().decode())
-   for host,item in zip(batch,result):
-    if item.get("status")=="success" and item.get("countryCode"): found[host]=item["countryCode"]
-  except Exception as e: print("GeoIP error:",e)
- try: import pycountry
- except ImportError: pycountry=None
- return [(pycountry.countries.get(alpha_2=found[h]).alpha_3 if h in found and pycountry and pycountry.countries.get(alpha_2=found[h]) else found.get(h,"UNK")) for h in hosts]
+def fetch_text(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "AVYRN-VPN-sync/2.0"})
+    with urllib.request.urlopen(req, timeout=TIMEOUT) as response:
+        return response.read().decode("utf-8", errors="replace")
 
-def country_flag(alpha3):
- flags={
-  "DE":"🇩🇪","US":"🇺🇸","GB":"🇬🇧","NL":"🇳🇱","FR":"🇫🇷","FI":"🇫🇮",
-  "SE":"🇸🇪","NO":"🇳🇴","PL":"🇵🇱","CZ":"🇨🇿","CH":"🇨🇭","AT":"🇦🇹",
-  "BE":"🇧🇪","ES":"🇪🇸","IT":"🇮🇹","PT":"🇵🇹","CA":"🇨🇦","TR":"🇹🇷",
-  "RU":"🇷🇺","UA":"🇺🇦","KZ":"🇰🇿","JP":"🇯🇵","SG":"🇸🇬","HK":"🇭🇰",
-  "IN":"🇮🇳","AL":"🇦🇱","AE":"🇦🇪","BR":"🇧🇷","AU":"🇦🇺"
- }
- # Convert ISO-3 to ISO-2 for flag emoji.
- try:
-  import pycountry
-  c=pycountry.countries.get(alpha_3=alpha3)
-  alpha2=c.alpha_2 if c else ""
- except Exception:
-  alpha2=""
- return flags.get(alpha2,"🏳️")
+def fetch_json(url):
+    return json.loads(fetch_text(url))
 
-def rename(items,prefix):
- labels=country_codes(items); out=[]
- label_prefix="AVYRN | " if prefix=="REG" else "AVYRN БС | "
- for item,country in zip(items,labels):
-  node=copy.deepcopy(item)
-  node["tag"]=country_flag(country)+" "+label_prefix+country
-  out.append(node)
- return out
-reg,bs=rename(reg,"REG"),rename(bs,"BS")
-# AVYRN layout: 40 regular manual servers; every other profile has exactly one node.
-reg,bs=reg[:40],bs[:40]
-reg_auto=reg
-bs_auto=bs
-helpers=[copy.deepcopy(x) for x in white.get("outbounds",[]) if not str(x.get("tag","")).startswith("igareck-node-")]
-for h in helpers:
- if h.get("tag")=="fragment":
-  st=h.setdefault("settings",{})
-  if isinstance(st.get("fragment"),dict): st["fragment"]["interval"]="1-3"
-  for noise in st.get("noises",[]): noise["delay"]="1-3"
+def parse_uri(line):
+    line = line.strip()
+    if not line or line.startswith("#"):
+        return None
+    try:
+        u = urlsplit(line)
+        scheme = u.scheme.lower()
+        if scheme not in ("vless", "trojan"):
+            return None
+        host, port = u.hostname, u.port
+        if not host or not port or not u.username:
+            return None
+        q = parse_qs(u.query, keep_blank_values=True)
+        get = lambda key, default="": q.get(key, [default])[0]
+        network = get("type", "tcp") or "tcp"
+        security = get("security", "none") or "none"
+        name = unquote(u.fragment) or host
+        if scheme == "vless":
+            user = {"id": unquote(u.username), "encryption": get("encryption", "none") or "none"}
+            if get("flow"):
+                user["flow"] = get("flow")
+            outbound = {
+                "protocol": "vless",
+                "settings": {"vnext": [{"address": host, "port": port, "users": [user]}]},
+            }
+        else:
+            outbound = {
+                "protocol": "trojan",
+                "settings": {"servers": [{"address": host, "port": port, "password": unquote(u.username)}]},
+            }
+        stream = {"network": network}
+        if security == "tls":
+            tls = {"serverName": get("sni") or get("host") or host}
+            if get("fp"):
+                tls["fingerprint"] = get("fp")
+            if get("alpn"):
+                tls["alpn"] = [x for x in get("alpn").split(",") if x]
+            tls["allowInsecure"] = False
+            stream["security"] = "tls"
+            stream["tlsSettings"] = tls
+        elif security == "reality":
+            reality = {
+                "serverName": get("sni") or host,
+                "fingerprint": get("fp", "chrome") or "chrome",
+                "publicKey": get("pbk"),
+                "shortId": get("sid"),
+            }
+            if get("spx"):
+                reality["spiderX"] = get("spx")
+            if not reality["publicKey"]:
+                return None
+            stream["security"] = "reality"
+            stream["realitySettings"] = reality
+        else:
+            stream["security"] = "none"
+        if network == "ws":
+            ws = {"path": unquote(get("path", "/")) or "/"}
+            host_header = get("host")
+            if host_header:
+                ws["headers"] = {"Host": host_header}
+            stream["wsSettings"] = ws
+        elif network == "grpc":
+            grpc = {"serviceName": get("serviceName")}
+            if get("mode"):
+                grpc["multiMode"] = get("mode") == "multi"
+            stream["grpcSettings"] = grpc
+        elif network == "tcp" and get("headerType"):
+            stream["tcpSettings"] = {"header": {"type": get("headerType")}}
+        if get("flow") and scheme == "vless":
+            stream.setdefault("sockopt", {})
+        outbound["streamSettings"] = stream
+        return {"outbound": outbound, "name": name, "host": host, "port": port}
+    except (ValueError, UnicodeError):
+        return None
 
-base=copy.deepcopy(white); base.pop("_meta",None); base.pop("remarks",None)
-base["dns"]["servers"]=base.get("dns",{}).get("servers",[])[:3]
-base["outbounds"]=[]
-base["observatory"]={"subjectSelector":["AVYRN | ","AVYRN БС | "],"probeURL":"https://www.gstatic.com/generate_204","probeInterval":"5m","enableConcurrency":True}
-routing=base.setdefault("routing",{})
-common_rules=[copy.deepcopy(x) for x in routing.get("rules",[]) if not x.get("balancerTag") and x.get("outboundTag")!="igareck-auto"]
-def shell(title):
- p=copy.deepcopy(base); p["remarks"]=title; return p
-def manual_one(item):
- p=shell(item["tag"]); p["outbounds"]=[copy.deepcopy(item)]+copy.deepcopy(helpers)
- p.pop("observatory",None); p["routing"]["balancers"]=[]
- p["routing"]["rules"]=copy.deepcopy(common_rules)
- return p
-def manual_profiles(items):
- return [manual_one(item) for item in items]
-def auto(items,prefix,title,tag):
- if not items: raise SystemExit("Empty AUTO pool: "+title)
- p=shell(title); p["outbounds"]=copy.deepcopy(items)+copy.deepcopy(helpers)
- selectors=list(dict.fromkeys(x["tag"].split(prefix)[0]+prefix for x in items))
- p["observatory"]={"subjectSelector":selectors,"probeURL":"https://www.gstatic.com/generate_204","probeInterval":"5m","enableConcurrency":True}
- p["routing"]["balancers"]=[{"tag":tag,"selector":selectors,"fallbackTag":items[0]["tag"],"strategy":{"type":"leastPing"}}]
- p["routing"]["rules"]=copy.deepcopy(common_rules)+[{"type":"field","network":"tcp,udp","balancerTag":tag}]
- return p
+def collect(urls):
+    found, seen = [], set()
+    for url in urls:
+        try:
+            raw = fetch_text(url)
+            parsed = 0
+            for line in raw.splitlines():
+                item = parse_uri(line)
+                if not item:
+                    continue
+                key = (item["outbound"]["protocol"], item["host"], item["port"],
+                       json.dumps(item["outbound"]["settings"], sort_keys=True))
+                if key in seen:
+                    continue
+                seen.add(key)
+                found.append(item)
+                parsed += 1
+            print(f"Source {url}: parsed {parsed}")
+        except Exception as exc:
+            print(f"Source unavailable {url}: {exc}")
+    return found
 
-# One Happ JSON-array subscription: every manual server is a selectable profile,
-# plus two independent leastPing profiles that only see their own server pool.
-profiles=manual_profiles(reg)+[auto(reg_auto,"AVYRN | ","AVYRN | AUTO","AVYRN-AUTO-REG")]+manual_profiles(bs)+[auto(bs_auto,"AVYRN БС | ","AVYRN БС | AUTO","AVYRN-AUTO-BS")]
-if len(profiles)!=len(reg)+len(bs)+2: raise SystemExit("Unexpected subscription entry count")
-Path("subscription.json").write_text(json.dumps(profiles,ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf-8")
-print(f"AVYRN: regular manual={len(reg)}, regular AUTO pool={len(reg_auto)}, whitelist manual={len(bs)}, whitelist AUTO pool={len(bs_auto)}, subscription entries={len(profiles)}")
+def tcp_check(item):
+    try:
+        with socket.create_connection((item["host"], item["port"]), timeout=4):
+            return True
+    except Exception:
+        return False
+
+def live_filter(items):
+    # Upstreams already run protocol/health checks; this adds a fresh TCP reachability check.
+    with ThreadPoolExecutor(max_workers=64) as pool:
+        flags = list(pool.map(tcp_check, items))
+    return [item for item, ok in zip(items, flags) if ok]
+
+def geo_codes(items):
+    hosts = []
+    for item in items:
+        host = item["host"]
+        try:
+            ipaddress.ip_address(host)
+        except ValueError:
+            try:
+                host = socket.gethostbyname(host)
+            except Exception:
+                host = None
+        hosts.append(host)
+    unique = list(dict.fromkeys(x for x in hosts if x))
+    result = {}
+    for start in range(0, len(unique), 100):
+        batch = unique[start:start + 100]
+        req = urllib.request.Request(
+            "http://ip-api.com/batch",
+            data=json.dumps([{"query": h, "fields": "status,countryCode"} for h in batch]).encode(),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as response:
+                rows = json.loads(response.read().decode())
+            for host, row in zip(batch, rows):
+                if row.get("status") == "success" and row.get("countryCode"):
+                    result[host] = row["countryCode"].upper()
+        except Exception as exc:
+            print("GeoIP lookup failed:", exc)
+    return [result.get(host) for host in hosts]
+
+FLAGS = {
+    "DE":"🇩🇪","US":"🇺🇸","GB":"🇬🇧","NL":"🇳🇱","FR":"🇫🇷","FI":"🇫🇮",
+    "SE":"🇸🇪","NO":"🇳🇴","PL":"🇵🇱","CZ":"🇨🇿","CH":"🇨🇭","AT":"🇦🇹",
+    "BE":"🇧🇪","ES":"🇪🇸","IT":"🇮🇹","PT":"🇵🇹","CA":"🇨🇦","TR":"🇹🇷",
+    "RU":"🇷🇺","UA":"🇺🇦","KZ":"🇰🇿","JP":"🇯🇵","SG":"🇸🇬","HK":"🇭🇰",
+    "IN":"🇮🇳","AL":"🇦🇱","AE":"🇦🇪","BR":"🇧🇷","AU":"🇦🇺","BG":"🇧🇬",
+    "CY":"🇨🇾","RO":"🇷🇴","GR":"🇬🇷","IE":"🇮🇪","IS":"🇮🇸","LU":"🇱🇺",
+    "LT":"🇱🇹","LV":"🇱🇻","EE":"🇪🇪","MD":"🇲🇩","RS":"🇷🇸","HR":"🇭🇷",
+    "SI":"🇸🇮","SK":"🇸🇰","HU":"🇭🇺","DK":"🇩🇰","IL":"🇮🇱","AR":"🇦🇷",
+    "MX":"🇲🇽","TH":"🇹🇭","ID":"🇮🇩","KR":"🇰🇷","TW":"🇹🇼","NZ":"🇳🇿",
+}
+
+def iso3(code):
+    if not code:
+        return "UNK"
+    try:
+        import pycountry
+        country = pycountry.countries.get(alpha_2=code)
+        return country.alpha_3 if country else code
+    except Exception:
+        return code
+
+def tag_items(items, pool):
+    codes = geo_codes(items)
+    tagged = []
+    for item, code in zip(items, codes):
+        node = copy.deepcopy(item["outbound"])
+        country = iso3(code)
+        flag = FLAGS.get(code, "🏳️")
+        prefix = "AVYRN | " if pool == "regular" else "AVYRN БС | "
+        node["tag"] = f"{flag} {prefix}{country}"
+        tagged.append(node)
+    return tagged
+
+def unique_internal_tags(items):
+    # Internal Xray tags must be unique inside a single AUTO profile.
+    counts, result = {}, []
+    for node in items:
+        clone = copy.deepcopy(node)
+        base = clone["tag"]
+        counts[base] = counts.get(base, 0) + 1
+        clone["tag"] = f"{base} [{counts[base]}]"
+        result.append(clone)
+    return result
+
+def main():
+    regular_raw = collect(SOURCES["regular"])
+    whitelist_raw = collect(SOURCES["whitelist"])
+    regular_raw = live_filter(regular_raw)
+    whitelist_raw = live_filter(whitelist_raw)
+    if len(regular_raw) < MIN_PER_POOL or len(whitelist_raw) < MIN_PER_POOL:
+        raise SystemExit(
+            f"Not enough reachable nodes: regular={len(regular_raw)}, "
+            f"whitelist={len(whitelist_raw)}. Refusing to publish a broken subscription."
+        )
+    # Keep the source order after live checks; the upstreams already sort/test their feeds.
+    regular_raw = regular_raw[:MAX_PER_POOL]
+    whitelist_raw = whitelist_raw[:MAX_PER_POOL]
+    regular = tag_items(regular_raw, "regular")
+    whitelist = tag_items(whitelist_raw, "whitelist")
+
+    template = fetch_json(BASE_HAPP)
+    helpers = [copy.deepcopy(x) for x in template.get("outbounds", [])
+               if not str(x.get("tag", "")).startswith("igareck-node-")]
+    base = copy.deepcopy(template)
+    base.pop("_meta", None)
+    base.pop("remarks", None)
+    base["outbounds"] = []
+    base["observatory"] = {
+        "subjectSelector": ["AVYRN | ", "AVYRN БС | "],
+        "probeURL": PROBE_URL,
+        "probeInterval": "5m",
+        "enableConcurrency": True,
+    }
+    routing = base.setdefault("routing", {})
+    common_rules = [copy.deepcopy(x) for x in routing.get("rules", [])
+                    if not x.get("balancerTag") and x.get("outboundTag") != "igareck-auto"]
+
+    def shell(title):
+        profile = copy.deepcopy(base)
+        profile["remarks"] = title
+        return profile
+
+    def manual_profiles(items, title_prefix):
+        profiles = []
+        for item in items:
+            profile = shell(item["tag"])
+            profile["outbounds"] = [copy.deepcopy(item)] + copy.deepcopy(helpers)
+            profile.pop("observatory", None)
+            profile["routing"]["balancers"] = []
+            profile["routing"]["rules"] = copy.deepcopy(common_rules)
+            profiles.append(profile)
+        return profiles
+
+    def auto_profile(items, pool, title, balancer_tag):
+        if not items:
+            raise SystemExit("Empty AUTO pool: " + title)
+        profile = shell(title)
+        internal = unique_internal_tags(items)
+        profile["outbounds"] = internal + copy.deepcopy(helpers)
+        selectors = list(dict.fromkeys(node["tag"].rsplit(" [", 1)[0] for node in internal))
+        profile["observatory"] = {
+            "subjectSelector": [selector for selector in selectors],
+            "probeURL": PROBE_URL,
+            "probeInterval": "5m",
+            "enableConcurrency": True,
+        }
+        profile["routing"]["balancers"] = [{
+            "tag": balancer_tag,
+            "selector": [node["tag"] for node in internal],
+            "fallbackTag": internal[0]["tag"],
+            "strategy": {"type": "leastPing"},
+        }]
+        profile["routing"]["rules"] = copy.deepcopy(common_rules) + [{
+            "type": "field", "network": "tcp,udp", "balancerTag": balancer_tag
+        }]
+        return profile
+
+    profiles = (
+        manual_profiles(regular, "regular")
+        + [auto_profile(regular, "regular", "AVYRN | AUTO", "AVYRN-AUTO-REG")]
+        + manual_profiles(whitelist, "whitelist")
+        + [auto_profile(whitelist, "whitelist", "AVYRN БС | AUTO", "AVYRN-AUTO-BS")]
+    )
+    expected = len(regular) + len(whitelist) + 2
+    if len(profiles) != expected:
+        raise SystemExit("Unexpected subscription entry count")
+    Path("subscription.json").write_text(
+        json.dumps(profiles, ensure_ascii=False, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+    print(
+        f"AVYRN built: regular={len(regular)}, whitelist={len(whitelist)}, "
+        f"regular AUTO pool={len(regular)}, whitelist AUTO pool={len(whitelist)}, "
+        f"profiles={len(profiles)}"
+    )
+
+if __name__ == "__main__":
+    main()
