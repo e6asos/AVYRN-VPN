@@ -50,6 +50,8 @@ def parse_uri(line):
         q = parse_qs(u.query, keep_blank_values=True)
         get = lambda key, default="": q.get(key, [default])[0]
         network = get("type", "tcp") or "tcp"
+        if network not in ("tcp", "ws", "grpc"):
+            return None
         security = get("security", "none") or "none"
         name = unquote(u.fragment) or host
         if scheme == "vless":
@@ -157,15 +159,9 @@ def live_filter(items):
 def geo_codes(items):
     hosts = []
     for item in items:
-        host = item["host"]
-        try:
-            ipaddress.ip_address(host)
-        except ValueError:
-            try:
-                host = socket.gethostbyname(host)
-            except Exception:
-                host = None
-        hosts.append(host)
+        # ip-api accepts hostnames as well as literal IP addresses.
+        # Avoid serial DNS lookups on the runner for large public feeds.
+        hosts.append(item["host"])
     unique = list(dict.fromkeys(x for x in hosts if x))
     result = {}
     for start in range(0, len(unique), 100):
