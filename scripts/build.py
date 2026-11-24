@@ -116,6 +116,7 @@ for helper in helper_outbounds:
         for noise in settings.get("noises", []):
             noise["delay"] = "1-3"
 base = json.loads(json.dumps(white))
+base["remarks"] = "AVYRN VPN"
 base["_meta"] = {
     "name": "AVYRN VPN — Обычные / AUTO / Белый список / AUTO БС",
     "generator": "AVYRN-VPN",
