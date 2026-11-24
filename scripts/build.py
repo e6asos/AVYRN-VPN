@@ -85,5 +85,5 @@ def auto(items,prefix,title,tag):
 # plus two independent leastPing profiles that only see their own server pool.
 profiles=[manual(reg,"AVYRN | Обычные"), auto(reg,"AVYRN | ","AVYRN | AUTO","AVYRN-AUTO-REG"), manual(bs,"AVYRN БС | Обычные"), auto(bs,"AVYRN БС | ","AVYRN БС | AUTO","AVYRN-AUTO-BS")]
 if len(profiles)!=4: raise SystemExit("Expected exactly four profiles")
-Path("subscription.json").write_text(json.dumps(profiles,ensure_ascii=False,separators=(",",":"))+"\\n",encoding="utf-8")
+Path("subscription.json").write_text(json.dumps(profiles,ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf-8")
 print(f"AVYRN 4-in-1: regular={len(reg)}+AUTO, whitelist={len(bs)}+AUTO, profiles={len(profiles)}")
