@@ -210,6 +210,7 @@ def tag_items(items, pool):
     for item, code in zip(items, codes):
         node = copy.deepcopy(item["outbound"])
         country = iso3(code)
+        country = {"DEU": "GER"}.get(country, country)
         flag = FLAGS.get(code, "🏳️")
         prefix = "AVYRN | " if pool == "regular" else "AVYRN БС | "
         node["tag"] = f"{flag} {prefix}{country}"
