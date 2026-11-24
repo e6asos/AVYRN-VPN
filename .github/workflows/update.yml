@@ -19,6 +19,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install GeoIP label dependency
+        run: pip install pycountry
+
       - name: Build subscription
         run: python3 scripts/build.py
 
