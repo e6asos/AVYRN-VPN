@@ -1701,7 +1701,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 27",
+      "tag": "AVYRN | CAN AA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1737,7 +1737,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 28",
+      "tag": "AVYRN | CAN AB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1774,7 +1774,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 29",
+      "tag": "AVYRN | CAN AC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1810,7 +1810,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 30",
+      "tag": "AVYRN | CAN AD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1846,7 +1846,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 31",
+      "tag": "AVYRN | CAN AE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1882,7 +1882,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 32",
+      "tag": "AVYRN | CAN AF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1919,7 +1919,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 33",
+      "tag": "AVYRN | CAN AG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1956,7 +1956,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 34",
+      "tag": "AVYRN | CAN AH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1993,7 +1993,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 35",
+      "tag": "AVYRN | CAN AI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2029,7 +2029,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 36",
+      "tag": "AVYRN | CAN AJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2065,7 +2065,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 37",
+      "tag": "AVYRN | CAN AK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2101,7 +2101,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 38",
+      "tag": "AVYRN | CAN AL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2137,7 +2137,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 39",
+      "tag": "AVYRN | CAN AM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2173,7 +2173,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 40",
+      "tag": "AVYRN | CAN AN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2210,7 +2210,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 41",
+      "tag": "AVYRN | CAN AO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2247,7 +2247,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 42",
+      "tag": "AVYRN | CAN AP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2284,7 +2284,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 43",
+      "tag": "AVYRN | CAN AQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2321,7 +2321,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 44",
+      "tag": "AVYRN | CAN AR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2358,7 +2358,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 45",
+      "tag": "AVYRN | CAN AS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2393,7 +2393,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 46",
+      "tag": "AVYRN | CAN AT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2432,7 +2432,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 47",
+      "tag": "AVYRN | CAN AU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2471,7 +2471,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 48",
+      "tag": "AVYRN | CAN AV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2506,7 +2506,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 49",
+      "tag": "AVYRN | CAN AW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2541,7 +2541,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 50",
+      "tag": "AVYRN | CAN AX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2578,7 +2578,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 51",
+      "tag": "AVYRN | CAN AY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2615,7 +2615,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 52",
+      "tag": "AVYRN | CAN AZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2650,7 +2650,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 53",
+      "tag": "AVYRN | CAN BA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2685,7 +2685,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 54",
+      "tag": "AVYRN | CAN BB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2722,7 +2722,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 55",
+      "tag": "AVYRN | CAN BC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2759,7 +2759,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 56",
+      "tag": "AVYRN | CAN BD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2796,7 +2796,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 57",
+      "tag": "AVYRN | CAN BE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2831,7 +2831,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 58",
+      "tag": "AVYRN | CAN BF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2866,7 +2866,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 59",
+      "tag": "AVYRN | CAN BG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3013,7 +3013,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 60",
+      "tag": "AVYRN | CAN BH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3050,7 +3050,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 61",
+      "tag": "AVYRN | CAN BI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3090,7 +3090,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 62",
+      "tag": "AVYRN | CAN BJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3127,7 +3127,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 63",
+      "tag": "AVYRN | CAN BK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3166,7 +3166,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 64",
+      "tag": "AVYRN | CAN BL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3391,7 +3391,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 65",
+      "tag": "AVYRN | CAN BM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3431,7 +3431,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 66",
+      "tag": "AVYRN | CAN BN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3468,7 +3468,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 67",
+      "tag": "AVYRN | CAN BO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3505,7 +3505,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 68",
+      "tag": "AVYRN | CAN BP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3541,7 +3541,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 69",
+      "tag": "AVYRN | CAN BQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3577,7 +3577,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 70",
+      "tag": "AVYRN | CAN BR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3613,7 +3613,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 71",
+      "tag": "AVYRN | CAN BS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3650,7 +3650,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 72",
+      "tag": "AVYRN | CAN BT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3684,7 +3684,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 73",
+      "tag": "AVYRN | CAN BU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3720,7 +3720,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 74",
+      "tag": "AVYRN | CAN BV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3757,7 +3757,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 75",
+      "tag": "AVYRN | CAN BW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3794,7 +3794,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 76",
+      "tag": "AVYRN | CAN BX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3831,7 +3831,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 77",
+      "tag": "AVYRN | CAN BY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3867,7 +3867,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 78",
+      "tag": "AVYRN | CAN BZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3904,7 +3904,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 79",
+      "tag": "AVYRN | CAN CA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3940,7 +3940,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 80",
+      "tag": "AVYRN | CAN CB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3976,7 +3976,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 81",
+      "tag": "AVYRN | CAN CC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4012,7 +4012,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 82",
+      "tag": "AVYRN | CAN CD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4049,7 +4049,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 83",
+      "tag": "AVYRN | CAN CE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4086,7 +4086,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 84",
+      "tag": "AVYRN | CAN CF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4123,7 +4123,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 85",
+      "tag": "AVYRN | CAN CG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4159,7 +4159,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 86",
+      "tag": "AVYRN | CAN CH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4199,7 +4199,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 87",
+      "tag": "AVYRN | CAN CI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4236,7 +4236,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 88",
+      "tag": "AVYRN | CAN CJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4273,7 +4273,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 89",
+      "tag": "AVYRN | CAN CK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4310,7 +4310,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 90",
+      "tag": "AVYRN | CAN CL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4347,7 +4347,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 91",
+      "tag": "AVYRN | CAN CM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4384,7 +4384,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 92",
+      "tag": "AVYRN | CAN CN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4493,7 +4493,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 93",
+      "tag": "AVYRN | CAN CO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4536,7 +4536,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 94",
+      "tag": "AVYRN | CAN CP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4574,7 +4574,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 95",
+      "tag": "AVYRN | CAN CQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4610,7 +4610,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 96",
+      "tag": "AVYRN | CAN CR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4650,7 +4650,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 97",
+      "tag": "AVYRN | CAN CS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4687,7 +4687,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 98",
+      "tag": "AVYRN | CAN CT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4726,7 +4726,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 99",
+      "tag": "AVYRN | CAN CU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4766,7 +4766,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 100",
+      "tag": "AVYRN | CAN CV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4806,7 +4806,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 101",
+      "tag": "AVYRN | CAN CW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4842,7 +4842,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 102",
+      "tag": "AVYRN | CAN CX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4879,7 +4879,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 103",
+      "tag": "AVYRN | CAN CY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4918,7 +4918,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 104",
+      "tag": "AVYRN | CAN CZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4953,7 +4953,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 105",
+      "tag": "AVYRN | CAN DA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4993,7 +4993,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 106",
+      "tag": "AVYRN | CAN DB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5033,7 +5033,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 107",
+      "tag": "AVYRN | CAN DC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5073,7 +5073,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 108",
+      "tag": "AVYRN | CAN DD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5113,7 +5113,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 109",
+      "tag": "AVYRN | CAN DE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5152,7 +5152,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 110",
+      "tag": "AVYRN | CAN DF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5192,7 +5192,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 111",
+      "tag": "AVYRN | CAN DG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5231,7 +5231,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 112",
+      "tag": "AVYRN | CAN DH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5271,7 +5271,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 113",
+      "tag": "AVYRN | CAN DI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5311,7 +5311,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 114",
+      "tag": "AVYRN | CAN DJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5351,7 +5351,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 115",
+      "tag": "AVYRN | CAN DK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5388,7 +5388,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 116",
+      "tag": "AVYRN | CAN DL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5428,7 +5428,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 117",
+      "tag": "AVYRN | CAN DM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5465,7 +5465,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 118",
+      "tag": "AVYRN | CAN DN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5501,7 +5501,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 119",
+      "tag": "AVYRN | CAN DO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5544,7 +5544,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 120",
+      "tag": "AVYRN | CAN DP",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5579,7 +5579,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 121",
+      "tag": "AVYRN | CAN DQ",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5617,7 +5617,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 122",
+      "tag": "AVYRN | CAN DR",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5653,7 +5653,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 123",
+      "tag": "AVYRN | CAN DS",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5729,7 +5729,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 124",
+      "tag": "AVYRN | CAN DT",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5764,7 +5764,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 125",
+      "tag": "AVYRN | CAN DU",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5799,7 +5799,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 126",
+      "tag": "AVYRN | CAN DV",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5834,7 +5834,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 127",
+      "tag": "AVYRN | CAN DW",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5871,7 +5871,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 128",
+      "tag": "AVYRN | CAN DX",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5908,7 +5908,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 129",
+      "tag": "AVYRN | CAN DY",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5945,7 +5945,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 130",
+      "tag": "AVYRN | CAN DZ",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5980,7 +5980,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 131",
+      "tag": "AVYRN | CAN EA",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -6017,7 +6017,7 @@
       }
     },
     {
-      "tag": "AVYRN | CAN 132",
+      "tag": "AVYRN | CAN EB",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -7189,7 +7189,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 27",
+      "tag": "AVYRN БС | RUS AA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7236,7 +7236,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 28",
+      "tag": "AVYRN БС | RUS AB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7283,7 +7283,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 29",
+      "tag": "AVYRN БС | RUS AC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7330,7 +7330,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 30",
+      "tag": "AVYRN БС | RUS AD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7377,7 +7377,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 31",
+      "tag": "AVYRN БС | RUS AE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7424,7 +7424,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 32",
+      "tag": "AVYRN БС | RUS AF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7471,7 +7471,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 33",
+      "tag": "AVYRN БС | RUS AG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7505,7 +7505,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 34",
+      "tag": "AVYRN БС | RUS AH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7539,7 +7539,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 35",
+      "tag": "AVYRN БС | RUS AI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7573,7 +7573,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 36",
+      "tag": "AVYRN БС | RUS AJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7607,7 +7607,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 37",
+      "tag": "AVYRN БС | RUS AK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7642,7 +7642,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 38",
+      "tag": "AVYRN БС | RUS AL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7680,7 +7680,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 39",
+      "tag": "AVYRN БС | RUS AM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7717,7 +7717,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 40",
+      "tag": "AVYRN БС | RUS AN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7754,7 +7754,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 41",
+      "tag": "AVYRN БС | RUS AO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7791,7 +7791,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 42",
+      "tag": "AVYRN БС | RUS AP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7828,7 +7828,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 43",
+      "tag": "AVYRN БС | RUS AQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7863,7 +7863,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 44",
+      "tag": "AVYRN БС | RUS AR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7898,7 +7898,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 45",
+      "tag": "AVYRN БС | RUS AS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7936,7 +7936,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 46",
+      "tag": "AVYRN БС | RUS AT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7974,7 +7974,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 47",
+      "tag": "AVYRN БС | RUS AU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8009,7 +8009,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 48",
+      "tag": "AVYRN БС | RUS AV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8044,7 +8044,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 49",
+      "tag": "AVYRN БС | RUS AW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8079,7 +8079,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 50",
+      "tag": "AVYRN БС | RUS AX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8117,7 +8117,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 51",
+      "tag": "AVYRN БС | RUS AY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8155,7 +8155,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 52",
+      "tag": "AVYRN БС | RUS AZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8193,7 +8193,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 53",
+      "tag": "AVYRN БС | RUS BA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8231,7 +8231,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 54",
+      "tag": "AVYRN БС | RUS BB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8269,7 +8269,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 55",
+      "tag": "AVYRN БС | RUS BC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8307,7 +8307,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 56",
+      "tag": "AVYRN БС | RUS BD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8342,7 +8342,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 57",
+      "tag": "AVYRN БС | RUS BE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8377,7 +8377,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 58",
+      "tag": "AVYRN БС | RUS BF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8412,7 +8412,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 59",
+      "tag": "AVYRN БС | RUS BG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8450,7 +8450,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 60",
+      "tag": "AVYRN БС | RUS BH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8488,7 +8488,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 61",
+      "tag": "AVYRN БС | RUS BI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8526,7 +8526,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 62",
+      "tag": "AVYRN БС | RUS BJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8564,7 +8564,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 63",
+      "tag": "AVYRN БС | RUS BK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8602,7 +8602,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 64",
+      "tag": "AVYRN БС | RUS BL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8640,7 +8640,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 65",
+      "tag": "AVYRN БС | RUS BM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8678,7 +8678,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 66",
+      "tag": "AVYRN БС | RUS BN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8716,7 +8716,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 67",
+      "tag": "AVYRN БС | RUS BO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8754,7 +8754,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 68",
+      "tag": "AVYRN БС | RUS BP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8801,7 +8801,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 69",
+      "tag": "AVYRN БС | RUS BQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8848,7 +8848,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 70",
+      "tag": "AVYRN БС | RUS BR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8895,7 +8895,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 71",
+      "tag": "AVYRN БС | RUS BS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8942,7 +8942,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 72",
+      "tag": "AVYRN БС | RUS BT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8989,7 +8989,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 73",
+      "tag": "AVYRN БС | RUS BU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9036,7 +9036,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 74",
+      "tag": "AVYRN БС | RUS BV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9074,7 +9074,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 75",
+      "tag": "AVYRN БС | RUS BW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9112,7 +9112,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 76",
+      "tag": "AVYRN БС | RUS BX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9150,7 +9150,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 77",
+      "tag": "AVYRN БС | RUS BY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9188,7 +9188,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 78",
+      "tag": "AVYRN БС | RUS BZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9226,7 +9226,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 79",
+      "tag": "AVYRN БС | RUS CA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9264,7 +9264,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 80",
+      "tag": "AVYRN БС | RUS CB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9304,7 +9304,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 81",
+      "tag": "AVYRN БС | RUS CC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9344,7 +9344,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 82",
+      "tag": "AVYRN БС | RUS CD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9384,7 +9384,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 83",
+      "tag": "AVYRN БС | RUS CE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9424,7 +9424,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 84",
+      "tag": "AVYRN БС | RUS CF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9464,7 +9464,7 @@
       }
     },
     {
-      "tag": "AVYRN БС | RUS 85",
+      "tag": "AVYRN БС | RUS CG",
       "protocol": "vless",
       "settings": {
         "vnext": [
