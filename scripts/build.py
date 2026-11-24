@@ -25,18 +25,69 @@ white_nodes = node_outbounds(white)
 if len(regular_nodes) < 5 or len(white_nodes) < 5:
     raise SystemExit(f"Refusing to publish: too few source nodes (regular={len(regular_nodes)}, whitelist={len(white_nodes)})")
 
-def alpha_name(index):
-    name = ""
-    while index:
-        index, remainder = divmod(index - 1, 26)
-        name = chr(65 + remainder) + name
-    return name
+def resolve_hosts(nodes):
+    import socket
+    hosts = []
+    for node in nodes:
+        try:
+            host = node["settings"]["vnext"][0]["address"]
+            try:
+                import ipaddress
+                ipaddress.ip_address(host)
+            except ValueError:
+                host = socket.gethostbyname(host)
+            hosts.append(host)
+        except Exception:
+            hosts.append(None)
+    return hosts
+
+def country_codes(nodes):
+    # ip-api batch lookup; country codes are converted to ISO-3 for compact labels.
+    import ipaddress
+    hosts = resolve_hosts(nodes)
+    unique = list(dict.fromkeys(h for h in hosts if h))
+    lookup = {}
+    for offset in range(0, len(unique), 100):
+        batch = unique[offset:offset + 100]
+        payload = [{"query": host, "fields": "status,countryCode"} for host in batch]
+        request = urllib.request.Request(
+            "http://ip-api.com/batch",
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json", "User-Agent": "AVYRN-VPN-sync/1.0"},
+            method="POST"
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=45) as response:
+                results = json.loads(response.read().decode("utf-8"))
+            for host, result in zip(batch, results):
+                if result.get("status") == "success" and result.get("countryCode"):
+                    lookup[host] = result["countryCode"]
+        except Exception as error:
+            print(f"GeoIP lookup batch failed: {error}")
+    try:
+        import pycountry
+    except ImportError:
+        pycountry = None
+    labels = []
+    for host in hosts:
+        code = lookup.get(host)
+        country = pycountry.countries.get(alpha_2=code) if code and pycountry else None
+        labels.append(country.alpha_3 if country else (code or "UNK"))
+    return labels
 
 def rename_nodes(nodes, prefix):
+    labels = country_codes(nodes)
+    totals = {}
+    for label in labels:
+        totals[label] = totals.get(label, 0) + 1
+    seen = {}
     renamed = []
-    for index, node in enumerate(nodes, 1):
+    for node, label in zip(nodes, labels):
+        seen[label] = seen.get(label, 0) + 1
+        suffix = "" if totals[label] == 1 else f" {chr(64 + seen[label])}" if seen[label] <= 26 else f" {seen[label]}"
         item = json.loads(json.dumps(node))
-        item["tag"] = f"AVYRN-{prefix}-{alpha_name(index)}"
+        pool = "AVYRN | " if prefix == "REG" else "AVYRN БС | "
+        item["tag"] = f"{pool}{label}{suffix}"
         renamed.append(item)
     return renamed
 
@@ -71,7 +122,7 @@ base["_meta"] = {
 }
 base["outbounds"] = regular_nodes + white_nodes + helper_outbounds
 base["observatory"] = {
-    "subjectSelector": ["AVYRN-REG-", "AVYRN-BS-"],
+    "subjectSelector": ["AVYRN | ", "AVYRN БС | "],
     "probeURL": "https://www.gstatic.com/generate_204",
     "probeInterval": "5m",
     "enableConcurrency": True
