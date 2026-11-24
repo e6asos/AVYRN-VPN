@@ -23,6 +23,7 @@ SOURCES = {
 BASE_HAPP = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Export/Happ/GLOBAL/Vless-Reality-White-Lists-Rus-Mobile-Happ-global.json"
 PROBE_URL = "https://www.gstatic.com/generate_204"
 MAX_PER_POOL = 40
+MAX_CANDIDATES_PER_SOURCE = 100
 MIN_PER_POOL = 5
 TIMEOUT = 35
 
@@ -126,6 +127,8 @@ def collect(urls):
                 seen.add(key)
                 item["source"] = url
                 group.append(item)
+                if len(group) >= MAX_CANDIDATES_PER_SOURCE:
+                    break
             print(f"Source {url}: parsed {len(group)} unique nodes")
         except Exception as exc:
             print(f"Source unavailable {url}: {exc}")
