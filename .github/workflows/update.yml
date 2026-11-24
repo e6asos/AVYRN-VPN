@@ -30,11 +30,9 @@ jobs:
       - name: Build subscription
         run: python3 scripts/build.py
 
-      - name: Validate JSON
-        run: python3 -m json.tool subscription.json > /dev/null
-
-      - name: Validate four isolated modes
+      - name: Validate JSON and four isolated modes
         run: |
+          python3 -m json.tool subscription.json > /dev/null
           python3 - <<'PY'
           import json
           from pathlib import Path
@@ -42,16 +40,18 @@ jobs:
           names = [p.get("remarks", "") for p in profiles]
           assert names.count("AVYRN | AUTO") == 1, names
           assert names.count("AVYRN БС | AUTO") == 1, names
-          assert sum(("AVYRN | " in n and n != "AVYRN | AUTO") for n in names) >= 1\n          assert sum(("AVYRN БС | " in n and n != "AVYRN БС | AUTO") for n in names) >= 1
-          assert len(profiles) >= 12, len(profiles)
-          for p in profiles:
-              if p.get("remarks") == "AVYRN | AUTO":
-                  tags = [o.get("tag", "") for o in p.get("outbounds", [])]
-                  assert tags and all("AVYRN БС" not in t for t in tags), tags
-              if p.get("remarks") == "AVYRN БС | AUTO":
-                  tags = [o.get("tag", "") for o in p.get("outbounds", [])]
-                  assert tags and all("AVYRN | " not in t for t in tags), tags
-          print(f"Validated {len(profiles)} Happ profiles")
+          regular_manual = [p for p in profiles if "AVYRN | " in p.get("remarks", "") and p.get("remarks") != "AVYRN | AUTO"]
+          whitelist_manual = [p for p in profiles if "AVYRN БС | " in p.get("remarks", "") and p.get("remarks") != "AVYRN БС | AUTO"]
+          assert regular_manual, "No regular manual profiles"
+          assert whitelist_manual, "No whitelist manual profiles"
+          regular_auto = next(p for p in profiles if p.get("remarks") == "AVYRN | AUTO")
+          whitelist_auto = next(p for p in profiles if p.get("remarks") == "AVYRN БС | AUTO")
+          regular_nodes = [o.get("tag", "") for o in regular_auto.get("outbounds", []) if o.get("protocol") in ("vless", "trojan")]
+          whitelist_nodes = [o.get("tag", "") for o in whitelist_auto.get("outbounds", []) if o.get("protocol") in ("vless", "trojan")]
+          assert regular_nodes and all("AVYRN БС | " not in t for t in regular_nodes), regular_nodes
+          assert whitelist_nodes and all("AVYRN | " not in t for t in whitelist_nodes), whitelist_nodes
+          assert len(profiles) == len(regular_manual) + len(whitelist_manual) + 2
+          print(f"Validated {len(regular_manual)} regular + {len(whitelist_manual)} whitelist + 2 AUTO profiles")
           PY
 
       - name: Publish
