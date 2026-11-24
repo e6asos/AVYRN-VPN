@@ -486,7 +486,7 @@
   ],
   "outbounds": [
     {
-      "tag": "AVYRN-REG-001",
+      "tag": "AVYRN-REG-A",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -523,7 +523,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-002",
+      "tag": "AVYRN-REG-B",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -560,7 +560,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-003",
+      "tag": "AVYRN-REG-C",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -597,7 +597,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-004",
+      "tag": "AVYRN-REG-D",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -634,7 +634,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-005",
+      "tag": "AVYRN-REG-E",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -671,7 +671,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-006",
+      "tag": "AVYRN-REG-F",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -708,7 +708,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-007",
+      "tag": "AVYRN-REG-G",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -745,7 +745,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-008",
+      "tag": "AVYRN-REG-H",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -782,7 +782,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-009",
+      "tag": "AVYRN-REG-I",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -820,7 +820,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-010",
+      "tag": "AVYRN-REG-J",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -855,7 +855,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-011",
+      "tag": "AVYRN-REG-K",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -895,7 +895,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-012",
+      "tag": "AVYRN-REG-L",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -934,7 +934,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-013",
+      "tag": "AVYRN-REG-M",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -974,7 +974,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-014",
+      "tag": "AVYRN-REG-N",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1014,7 +1014,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-015",
+      "tag": "AVYRN-REG-O",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1054,7 +1054,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-016",
+      "tag": "AVYRN-REG-P",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1091,7 +1091,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-017",
+      "tag": "AVYRN-REG-Q",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1127,7 +1127,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-018",
+      "tag": "AVYRN-REG-R",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1164,7 +1164,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-019",
+      "tag": "AVYRN-REG-S",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1203,7 +1203,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-020",
+      "tag": "AVYRN-REG-T",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1243,7 +1243,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-021",
+      "tag": "AVYRN-REG-U",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1283,7 +1283,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-022",
+      "tag": "AVYRN-REG-V",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1323,7 +1323,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-023",
+      "tag": "AVYRN-REG-W",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1360,7 +1360,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-024",
+      "tag": "AVYRN-REG-X",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1397,7 +1397,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-025",
+      "tag": "AVYRN-REG-Y",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1437,7 +1437,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-026",
+      "tag": "AVYRN-REG-Z",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1474,7 +1474,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-027",
+      "tag": "AVYRN-REG-AA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1513,7 +1513,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-028",
+      "tag": "AVYRN-REG-AB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1552,7 +1552,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-029",
+      "tag": "AVYRN-REG-AC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1582,7 +1582,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-030",
+      "tag": "AVYRN-REG-AD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1619,7 +1619,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-031",
+      "tag": "AVYRN-REG-AE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1658,7 +1658,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-032",
+      "tag": "AVYRN-REG-AF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1697,7 +1697,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-033",
+      "tag": "AVYRN-REG-AG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1732,7 +1732,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-034",
+      "tag": "AVYRN-REG-AH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1769,7 +1769,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-035",
+      "tag": "AVYRN-REG-AI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1806,7 +1806,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-036",
+      "tag": "AVYRN-REG-AJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1843,7 +1843,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-037",
+      "tag": "AVYRN-REG-AK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1878,7 +1878,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-038",
+      "tag": "AVYRN-REG-AL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1913,7 +1913,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-039",
+      "tag": "AVYRN-REG-AM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1947,7 +1947,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-040",
+      "tag": "AVYRN-REG-AN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -1984,7 +1984,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-041",
+      "tag": "AVYRN-REG-AO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2020,7 +2020,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-042",
+      "tag": "AVYRN-REG-AP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2056,7 +2056,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-043",
+      "tag": "AVYRN-REG-AQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2093,7 +2093,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-044",
+      "tag": "AVYRN-REG-AR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2129,7 +2129,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-045",
+      "tag": "AVYRN-REG-AS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2166,7 +2166,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-046",
+      "tag": "AVYRN-REG-AT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2203,7 +2203,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-047",
+      "tag": "AVYRN-REG-AU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2239,7 +2239,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-048",
+      "tag": "AVYRN-REG-AV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2275,7 +2275,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-049",
+      "tag": "AVYRN-REG-AW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2312,7 +2312,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-050",
+      "tag": "AVYRN-REG-AX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2349,7 +2349,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-051",
+      "tag": "AVYRN-REG-AY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2386,7 +2386,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-052",
+      "tag": "AVYRN-REG-AZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2426,7 +2426,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-053",
+      "tag": "AVYRN-REG-BA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2463,7 +2463,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-054",
+      "tag": "AVYRN-REG-BB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2500,7 +2500,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-055",
+      "tag": "AVYRN-REG-BC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2536,7 +2536,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-056",
+      "tag": "AVYRN-REG-BD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2572,7 +2572,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-057",
+      "tag": "AVYRN-REG-BE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2608,7 +2608,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-058",
+      "tag": "AVYRN-REG-BF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2645,7 +2645,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-059",
+      "tag": "AVYRN-REG-BG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2682,7 +2682,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-060",
+      "tag": "AVYRN-REG-BH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2719,7 +2719,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-061",
+      "tag": "AVYRN-REG-BI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2756,7 +2756,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-062",
+      "tag": "AVYRN-REG-BJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2792,7 +2792,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-063",
+      "tag": "AVYRN-REG-BK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2829,7 +2829,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-064",
+      "tag": "AVYRN-REG-BL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2866,7 +2866,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-065",
+      "tag": "AVYRN-REG-BM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2902,7 +2902,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-066",
+      "tag": "AVYRN-REG-BN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2939,7 +2939,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-067",
+      "tag": "AVYRN-REG-BO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -2976,7 +2976,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-068",
+      "tag": "AVYRN-REG-BP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3013,7 +3013,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-069",
+      "tag": "AVYRN-REG-BQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3049,7 +3049,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-070",
+      "tag": "AVYRN-REG-BR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3089,7 +3089,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-071",
+      "tag": "AVYRN-REG-BS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3128,7 +3128,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-072",
+      "tag": "AVYRN-REG-BT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3168,7 +3168,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-073",
+      "tag": "AVYRN-REG-BU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3205,7 +3205,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-074",
+      "tag": "AVYRN-REG-BV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3242,7 +3242,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-075",
+      "tag": "AVYRN-REG-BW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3279,7 +3279,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-076",
+      "tag": "AVYRN-REG-BX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3316,7 +3316,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-077",
+      "tag": "AVYRN-REG-BY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3352,7 +3352,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-078",
+      "tag": "AVYRN-REG-BZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3389,7 +3389,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-079",
+      "tag": "AVYRN-REG-CA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3425,7 +3425,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-080",
+      "tag": "AVYRN-REG-CB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3461,7 +3461,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-081",
+      "tag": "AVYRN-REG-CC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3497,7 +3497,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-082",
+      "tag": "AVYRN-REG-CD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3534,7 +3534,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-083",
+      "tag": "AVYRN-REG-CE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3568,7 +3568,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-084",
+      "tag": "AVYRN-REG-CF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3604,7 +3604,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-085",
+      "tag": "AVYRN-REG-CG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3641,7 +3641,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-086",
+      "tag": "AVYRN-REG-CH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3677,7 +3677,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-087",
+      "tag": "AVYRN-REG-CI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3714,7 +3714,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-088",
+      "tag": "AVYRN-REG-CJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3751,7 +3751,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-089",
+      "tag": "AVYRN-REG-CK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3787,7 +3787,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-090",
+      "tag": "AVYRN-REG-CL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3824,7 +3824,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-091",
+      "tag": "AVYRN-REG-CM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3864,7 +3864,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-092",
+      "tag": "AVYRN-REG-CN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3901,7 +3901,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-093",
+      "tag": "AVYRN-REG-CO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3938,7 +3938,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-094",
+      "tag": "AVYRN-REG-CP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -3974,7 +3974,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-095",
+      "tag": "AVYRN-REG-CQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4010,7 +4010,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-096",
+      "tag": "AVYRN-REG-CR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4046,7 +4046,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-097",
+      "tag": "AVYRN-REG-CS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4082,7 +4082,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-098",
+      "tag": "AVYRN-REG-CT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4119,7 +4119,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-099",
+      "tag": "AVYRN-REG-CU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4155,7 +4155,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-100",
+      "tag": "AVYRN-REG-CV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4191,7 +4191,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-101",
+      "tag": "AVYRN-REG-CW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4228,7 +4228,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-102",
+      "tag": "AVYRN-REG-CX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4267,7 +4267,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-103",
+      "tag": "AVYRN-REG-CY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4304,7 +4304,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-104",
+      "tag": "AVYRN-REG-CZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4341,7 +4341,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-105",
+      "tag": "AVYRN-REG-DA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4378,7 +4378,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-106",
+      "tag": "AVYRN-REG-DB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4414,7 +4414,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-107",
+      "tag": "AVYRN-REG-DC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4454,7 +4454,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-108",
+      "tag": "AVYRN-REG-DD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4491,7 +4491,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-109",
+      "tag": "AVYRN-REG-DE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4528,7 +4528,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-110",
+      "tag": "AVYRN-REG-DF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4568,7 +4568,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-111",
+      "tag": "AVYRN-REG-DG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4607,7 +4607,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-112",
+      "tag": "AVYRN-REG-DH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4644,7 +4644,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-113",
+      "tag": "AVYRN-REG-DI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4681,7 +4681,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-114",
+      "tag": "AVYRN-REG-DJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4718,7 +4718,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-115",
+      "tag": "AVYRN-REG-DK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4755,7 +4755,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-116",
+      "tag": "AVYRN-REG-DL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4792,7 +4792,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-117",
+      "tag": "AVYRN-REG-DM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4828,7 +4828,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-118",
+      "tag": "AVYRN-REG-DN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4865,7 +4865,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-119",
+      "tag": "AVYRN-REG-DO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4902,7 +4902,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-120",
+      "tag": "AVYRN-REG-DP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4939,7 +4939,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-121",
+      "tag": "AVYRN-REG-DQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -4975,7 +4975,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-122",
+      "tag": "AVYRN-REG-DR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5011,7 +5011,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-123",
+      "tag": "AVYRN-REG-DS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5048,7 +5048,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-124",
+      "tag": "AVYRN-REG-DT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5088,7 +5088,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-125",
+      "tag": "AVYRN-REG-DU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5123,7 +5123,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-126",
+      "tag": "AVYRN-REG-DV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5163,7 +5163,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-127",
+      "tag": "AVYRN-REG-DW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5203,7 +5203,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-128",
+      "tag": "AVYRN-REG-DX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5243,7 +5243,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-129",
+      "tag": "AVYRN-REG-DY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5282,7 +5282,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-130",
+      "tag": "AVYRN-REG-DZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5321,7 +5321,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-131",
+      "tag": "AVYRN-REG-EA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -5361,7 +5361,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-132",
+      "tag": "AVYRN-REG-EB",
       "protocol": "hysteria",
       "settings": {
         "version": 2,
@@ -5388,7 +5388,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-133",
+      "tag": "AVYRN-REG-EC",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5423,7 +5423,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-134",
+      "tag": "AVYRN-REG-ED",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5461,7 +5461,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-135",
+      "tag": "AVYRN-REG-EE",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5498,7 +5498,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-136",
+      "tag": "AVYRN-REG-EF",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5533,7 +5533,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-137",
+      "tag": "AVYRN-REG-EG",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5574,7 +5574,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-138",
+      "tag": "AVYRN-REG-EH",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5609,7 +5609,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-139",
+      "tag": "AVYRN-REG-EI",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5646,7 +5646,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-140",
+      "tag": "AVYRN-REG-EJ",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5681,7 +5681,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-141",
+      "tag": "AVYRN-REG-EK",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -5718,7 +5718,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-142",
+      "tag": "AVYRN-REG-EL",
       "protocol": "trojan",
       "settings": {
         "servers": [
@@ -5750,7 +5750,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-143",
+      "tag": "AVYRN-REG-EM",
       "protocol": "trojan",
       "settings": {
         "servers": [
@@ -5780,7 +5780,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-144",
+      "tag": "AVYRN-REG-EN",
       "protocol": "trojan",
       "settings": {
         "servers": [
@@ -5815,7 +5815,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-145",
+      "tag": "AVYRN-REG-EO",
       "protocol": "trojan",
       "settings": {
         "servers": [
@@ -5845,7 +5845,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-146",
+      "tag": "AVYRN-REG-EP",
       "protocol": "trojan",
       "settings": {
         "servers": [
@@ -5874,7 +5874,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-147",
+      "tag": "AVYRN-REG-EQ",
       "protocol": "trojan",
       "settings": {
         "servers": [
@@ -5909,7 +5909,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-148",
+      "tag": "AVYRN-REG-ER",
       "protocol": "trojan",
       "settings": {
         "servers": [
@@ -5939,7 +5939,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-149",
+      "tag": "AVYRN-REG-ES",
       "protocol": "trojan",
       "settings": {
         "servers": [
@@ -5968,7 +5968,7 @@
       }
     },
     {
-      "tag": "AVYRN-REG-150",
+      "tag": "AVYRN-REG-ET",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6005,7 +6005,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-001",
+      "tag": "AVYRN-BS-A",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6042,7 +6042,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-002",
+      "tag": "AVYRN-BS-B",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6079,7 +6079,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-003",
+      "tag": "AVYRN-BS-C",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6117,7 +6117,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-004",
+      "tag": "AVYRN-BS-D",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6155,7 +6155,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-005",
+      "tag": "AVYRN-BS-E",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6193,7 +6193,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-006",
+      "tag": "AVYRN-BS-F",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6231,7 +6231,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-007",
+      "tag": "AVYRN-BS-G",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6269,7 +6269,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-008",
+      "tag": "AVYRN-BS-H",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6307,7 +6307,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-009",
+      "tag": "AVYRN-BS-I",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6359,7 +6359,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-010",
+      "tag": "AVYRN-BS-J",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6398,7 +6398,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-011",
+      "tag": "AVYRN-BS-K",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6437,7 +6437,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-012",
+      "tag": "AVYRN-BS-L",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6476,7 +6476,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-013",
+      "tag": "AVYRN-BS-M",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6515,7 +6515,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-014",
+      "tag": "AVYRN-BS-N",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6549,7 +6549,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-015",
+      "tag": "AVYRN-BS-O",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6583,7 +6583,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-016",
+      "tag": "AVYRN-BS-P",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6630,7 +6630,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-017",
+      "tag": "AVYRN-BS-Q",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6677,7 +6677,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-018",
+      "tag": "AVYRN-BS-R",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6724,7 +6724,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-019",
+      "tag": "AVYRN-BS-S",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6771,7 +6771,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-020",
+      "tag": "AVYRN-BS-T",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6818,7 +6818,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-021",
+      "tag": "AVYRN-BS-U",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6865,7 +6865,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-022",
+      "tag": "AVYRN-BS-V",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6917,7 +6917,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-023",
+      "tag": "AVYRN-BS-W",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -6969,7 +6969,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-024",
+      "tag": "AVYRN-BS-X",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7016,7 +7016,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-025",
+      "tag": "AVYRN-BS-Y",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7063,7 +7063,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-026",
+      "tag": "AVYRN-BS-Z",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7110,7 +7110,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-027",
+      "tag": "AVYRN-BS-AA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7157,7 +7157,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-028",
+      "tag": "AVYRN-BS-AB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7204,7 +7204,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-029",
+      "tag": "AVYRN-BS-AC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7251,7 +7251,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-030",
+      "tag": "AVYRN-BS-AD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7298,7 +7298,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-031",
+      "tag": "AVYRN-BS-AE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7345,7 +7345,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-032",
+      "tag": "AVYRN-BS-AF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7392,7 +7392,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-033",
+      "tag": "AVYRN-BS-AG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7426,7 +7426,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-034",
+      "tag": "AVYRN-BS-AH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7460,7 +7460,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-035",
+      "tag": "AVYRN-BS-AI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7494,7 +7494,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-036",
+      "tag": "AVYRN-BS-AJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7528,7 +7528,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-037",
+      "tag": "AVYRN-BS-AK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7563,7 +7563,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-038",
+      "tag": "AVYRN-BS-AL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7601,7 +7601,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-039",
+      "tag": "AVYRN-BS-AM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7638,7 +7638,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-040",
+      "tag": "AVYRN-BS-AN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7675,7 +7675,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-041",
+      "tag": "AVYRN-BS-AO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7712,7 +7712,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-042",
+      "tag": "AVYRN-BS-AP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7749,7 +7749,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-043",
+      "tag": "AVYRN-BS-AQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7784,7 +7784,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-044",
+      "tag": "AVYRN-BS-AR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7819,7 +7819,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-045",
+      "tag": "AVYRN-BS-AS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7857,7 +7857,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-046",
+      "tag": "AVYRN-BS-AT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7895,7 +7895,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-047",
+      "tag": "AVYRN-BS-AU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7930,7 +7930,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-048",
+      "tag": "AVYRN-BS-AV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -7965,7 +7965,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-049",
+      "tag": "AVYRN-BS-AW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8000,7 +8000,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-050",
+      "tag": "AVYRN-BS-AX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8038,7 +8038,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-051",
+      "tag": "AVYRN-BS-AY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8076,7 +8076,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-052",
+      "tag": "AVYRN-BS-AZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8114,7 +8114,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-053",
+      "tag": "AVYRN-BS-BA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8152,7 +8152,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-054",
+      "tag": "AVYRN-BS-BB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8190,7 +8190,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-055",
+      "tag": "AVYRN-BS-BC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8228,7 +8228,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-056",
+      "tag": "AVYRN-BS-BD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8263,7 +8263,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-057",
+      "tag": "AVYRN-BS-BE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8298,7 +8298,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-058",
+      "tag": "AVYRN-BS-BF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8333,7 +8333,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-059",
+      "tag": "AVYRN-BS-BG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8371,7 +8371,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-060",
+      "tag": "AVYRN-BS-BH",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8409,7 +8409,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-061",
+      "tag": "AVYRN-BS-BI",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8447,7 +8447,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-062",
+      "tag": "AVYRN-BS-BJ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8485,7 +8485,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-063",
+      "tag": "AVYRN-BS-BK",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8523,7 +8523,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-064",
+      "tag": "AVYRN-BS-BL",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8561,7 +8561,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-065",
+      "tag": "AVYRN-BS-BM",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8599,7 +8599,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-066",
+      "tag": "AVYRN-BS-BN",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8637,7 +8637,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-067",
+      "tag": "AVYRN-BS-BO",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8675,7 +8675,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-068",
+      "tag": "AVYRN-BS-BP",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8722,7 +8722,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-069",
+      "tag": "AVYRN-BS-BQ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8769,7 +8769,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-070",
+      "tag": "AVYRN-BS-BR",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8816,7 +8816,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-071",
+      "tag": "AVYRN-BS-BS",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8863,7 +8863,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-072",
+      "tag": "AVYRN-BS-BT",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8910,7 +8910,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-073",
+      "tag": "AVYRN-BS-BU",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8957,7 +8957,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-074",
+      "tag": "AVYRN-BS-BV",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -8995,7 +8995,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-075",
+      "tag": "AVYRN-BS-BW",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9033,7 +9033,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-076",
+      "tag": "AVYRN-BS-BX",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9071,7 +9071,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-077",
+      "tag": "AVYRN-BS-BY",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9109,7 +9109,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-078",
+      "tag": "AVYRN-BS-BZ",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9147,7 +9147,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-079",
+      "tag": "AVYRN-BS-CA",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9185,7 +9185,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-080",
+      "tag": "AVYRN-BS-CB",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9225,7 +9225,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-081",
+      "tag": "AVYRN-BS-CC",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9265,7 +9265,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-082",
+      "tag": "AVYRN-BS-CD",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9305,7 +9305,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-083",
+      "tag": "AVYRN-BS-CE",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9345,7 +9345,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-084",
+      "tag": "AVYRN-BS-CF",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9385,7 +9385,7 @@
       }
     },
     {
-      "tag": "AVYRN-BS-085",
+      "tag": "AVYRN-BS-CG",
       "protocol": "vless",
       "settings": {
         "vnext": [
@@ -9485,7 +9485,7 @@
         "selector": [
           "AVYRN-REG-"
         ],
-        "fallbackTag": "AVYRN-REG-001",
+        "fallbackTag": "AVYRN-REG-A",
         "strategy": {
           "type": "leastPing"
         }
@@ -9495,7 +9495,7 @@
         "selector": [
           "AVYRN-BS-"
         ],
-        "fallbackTag": "AVYRN-BS-001",
+        "fallbackTag": "AVYRN-BS-A",
         "strategy": {
           "type": "leastPing"
         }
