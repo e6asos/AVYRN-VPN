@@ -53,8 +53,8 @@ def rename(items,prefix):
 reg,bs=rename(reg,"REG"),rename(bs,"BS")
 # AVYRN layout: 40 regular manual servers; every other profile has exactly one node.
 reg,bs=reg[:40],bs[:40]
-reg_auto=reg[:1]
-bs_auto=bs[:1]
+reg_auto=reg
+bs_auto=bs
 helpers=[copy.deepcopy(x) for x in white.get("outbounds",[]) if not str(x.get("tag","")).startswith("igareck-node-")]
 for h in helpers:
  if h.get("tag")=="fragment":
@@ -70,11 +70,13 @@ routing=base.setdefault("routing",{})
 common_rules=[copy.deepcopy(x) for x in routing.get("rules",[]) if not x.get("balancerTag") and x.get("outboundTag")!="igareck-auto"]
 def shell(title):
  p=copy.deepcopy(base); p["remarks"]=title; return p
-def manual(items,title):
- p=shell(title); p["outbounds"]=copy.deepcopy(items)+copy.deepcopy(helpers)
+def manual_one(item):
+ p=shell(item["tag"]); p["outbounds"]=[copy.deepcopy(item)]+copy.deepcopy(helpers)
  p.pop("observatory",None); p["routing"]["balancers"]=[]
  p["routing"]["rules"]=copy.deepcopy(common_rules)
  return p
+def manual_profiles(items):
+ return [manual_one(item) for item in items]
 def auto(items,prefix,title,tag):
  if not items: raise SystemExit("Empty AUTO pool: "+title)
  p=shell(title); p["outbounds"]=copy.deepcopy(items)+copy.deepcopy(helpers)
@@ -85,7 +87,7 @@ def auto(items,prefix,title,tag):
 
 # One Happ JSON-array subscription: every manual server is a selectable profile,
 # plus two independent leastPing profiles that only see their own server pool.
-profiles=[manual(reg,"AVYRN | Обычные"), auto(reg_auto,"AVYRN | ","AVYRN | AUTO","AVYRN-AUTO-REG"), manual(bs,"AVYRN БС | Обычные"), auto(bs_auto,"AVYRN БС | ","AVYRN БС | AUTO","AVYRN-AUTO-BS")]
-if len(profiles)!=4: raise SystemExit("Expected exactly four profiles")
+profiles=manual_profiles(reg)+[auto(reg_auto,"AVYRN | ","AVYRN | AUTO","AVYRN-AUTO-REG")]+manual_profiles(bs)+[auto(bs_auto,"AVYRN БС | ","AVYRN БС | AUTO","AVYRN-AUTO-BS")]
+if len(profiles)!=len(reg)+len(bs)+2: raise SystemExit("Unexpected subscription entry count")
 Path("subscription.json").write_text(json.dumps(profiles,ensure_ascii=False,separators=(",",":"))+"\n",encoding="utf-8")
-print(f"AVYRN 4-in-1: regular={len(reg)}+AUTO, whitelist={len(bs)}+AUTO, profiles={len(profiles)}")
+print(f"AVYRN: regular manual={len(reg)}, regular AUTO pool={len(reg_auto)}, whitelist manual={len(bs)}, whitelist AUTO pool={len(bs_auto)}, subscription entries={len(profiles)}")
