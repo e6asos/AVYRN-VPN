@@ -15,11 +15,9 @@ SOURCES = {
         "https://raw.githubusercontent.com/pie-with-jam/PulseProxy/main/githubmirror/6.txt",
         "https://raw.githubusercontent.com/wlunlocker/vpn-configs/main/blacklist_all.txt",
     ],
-    "whitelist": [
-        "https://raw.githubusercontent.com/wlunlocker/vpn-configs/main/whitelist_all.txt",
-    ],
+    "whitelist": [],
 }
-WHITELIST_HAPP_JSON = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Export/Happ/GLOBAL/Vless-Reality-White-Lists-Rus-Mobile-Happ-global.json"
+WHITELIST_HAPP_JSON = "https://raw.githubusercontent.com/TelegaVPN/free-vpn-keys/main/sub/happ/ru-whitelist.json"
 BASE_HAPP = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Export/Happ/GLOBAL/Vless-Reality-White-Lists-Rus-Mobile-Happ-global.json"
 PROBE_URL = "https://www.gstatic.com/generate_204"
 MAX_PER_POOL = 40
@@ -144,31 +142,44 @@ def collect(urls):
     return merged
 
 def collect_happ_json(url):
-    """Import proxy outbounds from a dedicated Happ whitelist feed."""
+    """Import individually tagged foreign-exit nodes from a RU-tested Happ feed."""
     try:
         config = fetch_json(url)
     except Exception as exc:
         print(f"Whitelist Happ source unavailable {url}: {exc}")
         return []
+    profiles = config if isinstance(config, list) else [config]
     items = []
-    for outbound in config.get("outbounds", []):
-        if not str(outbound.get("tag", "")).startswith("igareck-node-"):
-            continue
-        protocol = outbound.get("protocol")
-        settings = outbound.get("settings", {})
-        if protocol == "vless":
-            servers = settings.get("vnext", [])
-        elif protocol == "trojan":
-            servers = settings.get("servers", [])
-        else:
-            continue
-        if not servers:
-            continue
-        host, port = servers[0].get("address"), servers[0].get("port")
-        if not host or not port:
-            continue
-        items.append({"outbound": copy.deepcopy(outbound), "name": outbound.get("tag", "whitelist"), "host": host, "port": int(port), "source": url})
-    print(f"Whitelist Happ source {url}: imported {len(items)} nodes")
+    for profile in profiles:
+        for outbound in profile.get("outbounds", []):
+            tag = str(outbound.get("tag", ""))
+            if not tag.startswith("proxy-"):
+                continue
+            flag = next((tag[i:i + 2] for i in range(len(tag) - 1)
+                         if 0x1F1E6 <= ord(tag[i]) <= 0x1F1FF
+                         and 0x1F1E6 <= ord(tag[i + 1]) <= 0x1F1FF), None)
+            if not flag:
+                continue
+            code = "".join(chr(ord(ch) - 0x1F1E6 + ord("A")) for ch in flag)
+            if code == "RU" or code not in FLAGS:
+                continue
+            protocol = outbound.get("protocol")
+            settings = outbound.get("settings", {})
+            if protocol == "vless":
+                servers = settings.get("vnext", [])
+            elif protocol == "trojan":
+                servers = settings.get("servers", [])
+            else:
+                continue
+            if not servers:
+                continue
+            host, port = servers[0].get("address"), servers[0].get("port")
+            if not host or not port:
+                continue
+            items.append({"outbound": copy.deepcopy(outbound), "name": tag,
+                          "host": host, "port": int(port), "country_code": code, "source": url})
+    items = deduplicate(items)
+    print(f"Whitelist Happ source {url}: imported {len(items)} foreign-exit candidates")
     return items
 
 def deduplicate(items):
@@ -242,7 +253,8 @@ def iso3(code):
         return code
 
 def tag_items(items, pool):
-    codes = geo_codes(items)
+    codes = ([item.get("country_code") for item in items]
+             if pool == "whitelist" else geo_codes(items))
     tagged = []
     for item, code in zip(items, codes):
         node = copy.deepcopy(item["outbound"])
@@ -267,23 +279,12 @@ def unique_internal_tags(items):
 
 def main():
     regular_raw = collect(SOURCES["regular"])
-    whitelist_raw = deduplicate(
-        collect(SOURCES["whitelist"]) + collect_happ_json(WHITELIST_HAPP_JSON)
-    )
+    whitelist_raw = collect_happ_json(WHITELIST_HAPP_JSON)
     regular_raw = live_filter(regular_raw)
     whitelist_raw = live_filter(whitelist_raw)
-    # A white-list bypass pool must not be filled with Russian exit IPs or
-    # unknown locations: those do not solve access to globally blocked services.
-    whitelist_geo = geo_codes(whitelist_raw)
-    before_geo_filter = len(whitelist_raw)
-    whitelist_raw = [
-        item for item, code in zip(whitelist_raw, whitelist_geo)
-        if code and code != "RU"
-    ]
-    print(
-        f"Whitelist foreign, GeoIP-confirmed and TCP-reachable nodes: "
-        f"{len(whitelist_raw)}/{before_geo_filter}"
-    )
+    # Feed country labels describe foreign exits, not endpoint IPs; a Russian
+    # allowlisted relay can legitimately carry traffic to a foreign exit.
+    print(f"Whitelist foreign-exit candidates after TCP check: {len(whitelist_raw)}")
     if len(regular_raw) < MIN_PER_POOL or len(whitelist_raw) < MIN_PER_POOL:
         raise SystemExit(
             f"Not enough reachable nodes: regular={len(regular_raw)}, "
