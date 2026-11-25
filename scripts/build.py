@@ -16,10 +16,10 @@ SOURCES = {
         "https://raw.githubusercontent.com/wlunlocker/vpn-configs/main/blacklist_all.txt",
     ],
     "whitelist": [
-        "https://raw.githubusercontent.com/pie-with-jam/PulseProxy/main/githubmirror/30.txt",
         "https://raw.githubusercontent.com/wlunlocker/vpn-configs/main/whitelist_all.txt",
     ],
 }
+WHITELIST_HAPP_JSON = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Export/Happ/GLOBAL/Vless-Reality-White-Lists-Rus-Mobile-Happ-global.json"
 BASE_HAPP = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Export/Happ/GLOBAL/Vless-Reality-White-Lists-Rus-Mobile-Happ-global.json"
 PROBE_URL = "https://www.gstatic.com/generate_204"
 MAX_PER_POOL = 40
@@ -143,6 +143,43 @@ def collect(urls):
                 merged.append(group[index])
     return merged
 
+def collect_happ_json(url):
+    """Import proxy outbounds from a dedicated Happ whitelist feed."""
+    try:
+        config = fetch_json(url)
+    except Exception as exc:
+        print(f"Whitelist Happ source unavailable {url}: {exc}")
+        return []
+    items = []
+    for outbound in config.get("outbounds", []):
+        if not str(outbound.get("tag", "")).startswith("igareck-node-"):
+            continue
+        protocol = outbound.get("protocol")
+        settings = outbound.get("settings", {})
+        if protocol == "vless":
+            servers = settings.get("vnext", [])
+        elif protocol == "trojan":
+            servers = settings.get("servers", [])
+        else:
+            continue
+        if not servers:
+            continue
+        host, port = servers[0].get("address"), servers[0].get("port")
+        if not host or not port:
+            continue
+        items.append({"outbound": copy.deepcopy(outbound), "name": outbound.get("tag", "whitelist"), "host": host, "port": int(port), "source": url})
+    print(f"Whitelist Happ source {url}: imported {len(items)} nodes")
+    return items
+
+def deduplicate(items):
+    seen, result = set(), []
+    for item in items:
+        key = (item["outbound"].get("protocol"), item["host"], item["port"], json.dumps(item["outbound"].get("settings", {}), sort_keys=True))
+        if key not in seen:
+            seen.add(key)
+            result.append(item)
+    return result
+
 def tcp_check(item):
     try:
         with socket.create_connection((item["host"], item["port"]), timeout=4):
@@ -230,7 +267,9 @@ def unique_internal_tags(items):
 
 def main():
     regular_raw = collect(SOURCES["regular"])
-    whitelist_raw = collect(SOURCES["whitelist"])
+    whitelist_raw = deduplicate(
+        collect(SOURCES["whitelist"]) + collect_happ_json(WHITELIST_HAPP_JSON)
+    )
     regular_raw = live_filter(regular_raw)
     whitelist_raw = live_filter(whitelist_raw)
     if len(regular_raw) < MIN_PER_POOL or len(whitelist_raw) < MIN_PER_POOL:
