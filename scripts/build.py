@@ -23,7 +23,7 @@ WHITELIST_HAPP_JSON = "https://raw.githubusercontent.com/igareck/vpn-configs-for
 BASE_HAPP = "https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/Export/Happ/GLOBAL/Vless-Reality-White-Lists-Rus-Mobile-Happ-global.json"
 PROBE_URL = "https://www.gstatic.com/generate_204"
 MAX_PER_POOL = 40
-MAX_CANDIDATES_PER_SOURCE = 100
+MAX_CANDIDATES_PER_SOURCE = 250
 MIN_PER_POOL = 5
 TIMEOUT = 35
 
@@ -272,6 +272,18 @@ def main():
     )
     regular_raw = live_filter(regular_raw)
     whitelist_raw = live_filter(whitelist_raw)
+    # A white-list bypass pool must not be filled with Russian exit IPs or
+    # unknown locations: those do not solve access to globally blocked services.
+    whitelist_geo = geo_codes(whitelist_raw)
+    before_geo_filter = len(whitelist_raw)
+    whitelist_raw = [
+        item for item, code in zip(whitelist_raw, whitelist_geo)
+        if code and code != "RU"
+    ]
+    print(
+        f"Whitelist foreign, GeoIP-confirmed and TCP-reachable nodes: "
+        f"{len(whitelist_raw)}/{before_geo_filter}"
+    )
     if len(regular_raw) < MIN_PER_POOL or len(whitelist_raw) < MIN_PER_POOL:
         raise SystemExit(
             f"Not enough reachable nodes: regular={len(regular_raw)}, "
