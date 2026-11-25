@@ -281,6 +281,11 @@ def main():
     regular_raw = collect(SOURCES["regular"])
     whitelist_raw = collect_happ_json(WHITELIST_HAPP_JSON)
     regular_raw = live_filter(regular_raw)
+    regular_geo = geo_codes(regular_raw)
+    regular_raw = [
+        dict(item, country_code=code)
+        for item, code in zip(regular_raw, regular_geo) if code
+    ]
     whitelist_raw = live_filter(whitelist_raw)
     # Feed country labels describe foreign exits, not endpoint IPs; a Russian
     # allowlisted relay can legitimately carry traffic to a foreign exit.
